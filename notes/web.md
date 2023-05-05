@@ -1,4 +1,5 @@
 # WEB SERVERS
+[**notes home**](../notes.md)
 
 :computer:
 
@@ -7,23 +8,29 @@
 * Fiber and hardware \- physical linking
 * HTTP (hypertext transport protocol) is what we interact with
 
+Tim Berners-Lee -> the Web Father, HTML, structure
+Hakon Wiume Lie -> CSS, styling
+Brandon Eich -> JavaScript, interaction
+
+
 > ## DNS
 > news.byu.edu
 > - root domain is byu.edu
 > - subdomain is news.
 > - top level domain is edu.
 > Each subdomain can be at a different IP.
-> '''whois''' to get info for a root domain.
+> 'whois' to get info for a root domain.
 >  
 > To map domain to IP, use:
 > * A (address): maps domain -> IP
 > * CNAME (canonical name): maps domain -> domain. aliasing!
->
+> 
 > Finding IP addresses: browser cache -> DNS server cache -> authoritative name server -> error.
+> 
 > > so much caching?? TTL (time to live) clears cache after time period, so you can update domain info successfully.
->
+>  
 
-'''curl''' makes http requests.
+'curl' makes http requests.
 
 Different services use different ports, and a *gateway* helps split traffic from different services to different ports.
 
@@ -44,19 +51,21 @@ Gateway/reverse proxy service.
 - serves up all static files
 - gateway to subdomains
 
-'''~/Caddyfile''' config
+'~/Caddyfile' config
 * defines where http requests are routed
 * has location of static HTML files
 * proxy requests to services
 
-'''~/public_html''' HTML files
+'~/public_html' HTML files
 
-'''/usr/share/caddy''' static file server
+'/usr/share/caddy' static file server
 
-''':80 {
+'''
+:80 {
       root * /usr/share/caddy
       file_server
-}'''
+}
+'''
 
 http request on port 80 -> use path to find corress file.
 
