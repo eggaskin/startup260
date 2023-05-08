@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOTED</title>
+  </head>
+  <body>
+    <header>
+      <h1>NOTED<sup>&reg;</sup></h1>
+
+      <nav>
+        <menu>
+          <li><a href="index.html">Notepad</a></li>
+          <li><a href="category.html">Categories</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="about.html">About</a></li>
+        </menu>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <h1>Welcome</h1>
+      <p>Note area</p>
+      <form method="get" action="index.html">
+        <ul>
+            <li><input type="text" id="note" placeholder="Make your note here" />
+            </li>
+            <li><label for="select">Category: </label>
+                <select id="select" name="varSelect">
+                    <option>grocery list</option>
+                    <option selected>to buy</option>
+                    <option>people to respond to</option>
+                </select>
+                <button>New</button>
+            </li>
+            <!-- TODO: MAKE NEW CATEGORY OPTION-->
+        </ul>
+        
+        <button type="submit">Note it</button>
+      </form>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Created by Evelyn Gaskin</span>
+      <br />
+      <a href="https://github.com/eggaskin/startup260">GitHub</a>
+    </footer>
+  </body>
+</html>

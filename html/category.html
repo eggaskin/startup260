@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOTED</title>
+  </head>
+  <body>
+    <header>
+      <h1>Your Categories<sup>&reg;</sup></h1>
+
+      <nav>
+        <menu>
+          <li><a href="index.html">Notepad</a></li>
+          <li><a href="category.html">Categories</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="about.html">About</a></li>
+        </menu>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <h1>Category</h1>
+        <form method="get" action="category.html">
+            <ul>
+                <li><label for="select">Category: </label>
+                    <select id="select" name="varSelect">
+                        <option>grocery list</option>
+                        <option selected>to buy</option>
+                        <option>people to respond to</option>
+                    </select>
+                </li>
+                <li><button type="submit">View Category</button></li>
+            </ul>
+        </form>
+      <h1>Items</h1>
+      <fieldset>
+        <ul>
+            <li><p>apples</p></li>
+            <li><p>eggs</p></li>
+            <li><p>pesto</p></li>
+            <li><p>licorice</p></li>
+            <li>
+                <p>Add Item</p>
+                <form method="get" action="category.html">
+                    <input type="text" id="note" placeholder="New Item" />
+                        
+                        <button type="submit">Add Item</button>
+                </form>
+            </li>
+        </ul>
+      </fieldset>
+      <h1>Styling</h1>
+      <form method="get" action="category.html">
+        <ul>
+            <li><label for="catbackground">Background color</label>
+            </label><input type="color" id="catbackground" placeholder="#fffe87" />
+            </li>
+            <li>
+                <fieldset>
+                    <legend>Item style</legend>
+                    <label for="radio1">checkboxes</label>
+                    <input type="radio" id="radio1" name="varRadio" value="radio1" checked />
+                    <label for="radio2">list items</label>
+                    <input type="radio" id="radio2" name="varRadio" value="radio2" />
+                  </fieldset>
+            </li>
+            <li><button type="delete">Delete Category</button></li>
+        </ul>
+      </form>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Created by Evelyn Gaskin</span>
+      <br />
+      <a href="https://github.com/eggaskin/startup260">GitHub</a>
+    </footer>
+  </body>
+</html>
