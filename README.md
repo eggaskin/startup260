@@ -17,8 +17,6 @@ Have you ever suddenly realized that you needed some ingredient for a meal, some
 - Ability to add category
 - Ability to customize added categories
 - Ability to view category and all notes added to category
-- Ability to share category with other users
-- Ability to add notes to shared categories
 - Ability to delete categories
 - Ability to delete items from categories
 
