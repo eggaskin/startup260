@@ -42,13 +42,13 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I added the application structure.
 
-- **HTML pages** - 
-- **Links** - 
-- **Text** - 
-- **Images** - 
-- **Login** - 
-- **Database** - 
-- **WebSocket** - 
+- **HTML pages** - There are separate pages
+- **Links** - There is a navigation menu with links between the pages.
+- **Text** - There are text decriptions on the About page and descriptions for different elements.
+- **Images** - There is a placeholder logo image on each page in the header.
+- **Login** - There is a login page with a place for username/password, and a username display on every page.
+- **Database** - There is a mock category viewing page with different notes from a category.
+- **WebSocket** - There is a mock category viewing page with different notes from a category, you can select different categories to get the notes from each.
 
 
 ## FROM HERE ON IS UNFINISHED
