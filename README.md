@@ -19,6 +19,7 @@ Have you ever suddenly realized that you needed some ingredient for a meal, some
 - Ability to view category and all notes added to category
 - Ability to delete categories
 - Ability to delete items from categories
+- Ability to add notes to global category for all users, whose notes clear after a certain point
 
 ### Technologies
 
@@ -31,9 +32,9 @@ I am going to use the required technologies in the following ways.
   - login
   - submit notes
   - view categories
-- **DB** - Store categories and notes in categories in database.
+- **DB** - Store categories and notes in categories in database. Ability to recall these.
 - **Login** - Register and login users.
-- **WebSocket** - As a user adds a note, it's sent to the web server to be added to a category. When viewing a category, all the corresponding notes are displayed.
+- **WebSocket** - As a user adds a note to the global category, it's sent to the web server. Any user can view the global category as well as all the notes in it in real time.
 - **React** - Application ported to use the React web framework.
 
 ## HTML deliverable
@@ -45,9 +46,8 @@ For this deliverable I added the application structure.
 - **Text** - There are text decriptions on the About page and descriptions for different elements.
 - **Images** - There is a placeholder logo image on each page in the header.
 - **Login** - There is a login page with a place for username/password, and a username display on every page.
-- **Database** - There is a mock category viewing page with different notes from a category.
-- **WebSocket** - There is a mock category viewing page with different notes from a category, you can select different categories to get the notes from each.
-
+- **Database** - There is a mock category viewing page with different notes from a category, and ability to delete and add notes to categories.
+- **WebSocket** - There is a mock category viewing page with fake global category notes and usernames, and on the notepad page there is a category option for the global category.
 
 ## FROM HERE ON IS UNFINISHED
 ## CSS deliverable
