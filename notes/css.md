@@ -28,6 +28,8 @@ To select elements with a specific *attribute*:
 
 "Pseudo" selector look like 'section:hover' and happen when a specific action happens.
 
+Style using 'style="attributes:attribute"'.
+
 ## Declarations
 Change the properties of an element. So many. Use [this reference](https://learn.cs260.click/page/css/declarations/declarations_md).
 
