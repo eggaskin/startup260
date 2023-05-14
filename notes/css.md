@@ -35,6 +35,8 @@ Change the properties of an element. So many. Use [this reference](https://learn
 
 **Units**: can specify a suffix to use different units.
 
+vh for view height, em for m-letter size, px for pixels.
+
 ### Fonts
 Font families are groups of fonts: serif, sans-serif, fixed, symbol (non-text).
 

@@ -16,84 +16,73 @@
         <a href="login.html" class="nav-link">Login/About</a>
         <button class="userdisplay" >Hi,<b>Username</b> </button>
       </nav>
-      <hr />
     </header>
 
     <main>
-      <section id="catSelect">
-        <form method="get" action="category.html">
-            <ul>
-                <li><label for="select">Category: </label>
-                    <select id="select" name="varSelect">
-                        <option>grocery list</option>
-                        <option selected>to buy</option>
-                        <option>people to respond to</option>
-                    </select>
+      <div class="container" style="flex-direction:column">
+        <div class="container" style="flex-direction: row; flex:1" id="userscontent">
+          <section class="notelist" style="flex:2; overflow-y:scroll">
+            <div class="list">
+                <li><p>apples</p><button>Delete</button></li>
+                <li><p>eggs</p><button>Delete</button></li>
+                <li><p>pesto</p><button>Delete</button></li>
+                <li><p>licorice</p><button>Delete</button></li>
+                <li>
+                    <p>Add Item</p>
+                    <form method="get" action="category.html">
+                        <input type="text" id="note" placeholder="New Item" />
+                            
+                            <button type="submit">Add Item</button>
+                    </form>
                 </li>
-                <li><button type="submit">View Category</button></li>
-            </ul>
-        </form>
-        </section>
-      <section class="notelist">
-      <fieldset>
-        <div class="list">
-            <li><p>apples</p><button>Delete</button></li>
-            <li><p>eggs</p><button>Delete</button></li>
-            <li><p>pesto</p><button>Delete</button></li>
-            <li><p>licorice</p><button>Delete</button></li>
-            <li>
-                <p>Add Item</p>
-                <form method="get" action="category.html">
-                    <input type="text" id="note" placeholder="New Item" />
-                        
-                        <button type="submit">Add Item</button>
-                </form>
-            </li>
+              </div>
+          </section>
+          <div class="container" style="flex-direction:column">
+            <div class="postit" id="catSelect">
+            <form method="get" action="category.html">
+                    <div><label for="select">Category: </label>
+                        <select id="select" name="varSelect">
+                            <option>grocery list</option>
+                            <option selected>to buy</option>
+                            <option>people to respond to</option>
+                        </select></div>
+                    <button type="submit">View Category</button>
+            </form>
           </div>
-      </fieldset></section>
-      <section class="styling"><h1>Styling</h1>
-      <form method="get" action="category.html">
-        <ul>
-            <li><label for="catbackground">Background color</label>
-            </label><input type="color" id="catbackground" placeholder="#fffe87" />
-            </li>
-            <li>
-                <fieldset>
-                    <legend>Item style</legend>
+          <div class="postit" id="styling"><h1>Styling</h1>
+            <form method="get" action="category.html">
+                  <div><label for="catbackground">Background color</label>
+                  <input type="color" id="catbackground" value="#0000ff" /></div>
+                  <div><legend>Item style</legend>
                     <label for="radio1">checkboxes</label>
                     <input type="radio" id="radio1" name="varRadio" value="radio1"  />
                     <label for="radio2">list items</label>
-                    <input type="radio" id="radio2" name="varRadio" value="radio2" checked />
-                  </fieldset>
-            </li>
-            <li><button type="delete">Delete Category</button></li>
-        </ul>
-      </form>
-      </section>
-      <section class="global">
-      <h1>Global Notepad</h1>
-      <fieldset>
-        <div class="list">
-            <li><p>this is an inspirational message for you!</p><a>3beesinatrenchcoat</a></li>
-            <li><p>i wonder what i can put here?</p><a>800cows</a></li>
-            <li><p>i like eggs</p><a>sirdoug</a></li>
-            <li><p>beep bop</p><a>eggaskin</a></li>
-            <li>
-                <p>Add Item</p>
-                <form method="get" action="category.html">
-                    <input type="text" id="note" placeholder="New Item" />
-                        
-                        <button type="submit">Add Item</button>
-                </form>
-            </li>
+                    <input type="radio" id="radio2" name="varRadio" value="radio2" checked /></div>
+                  <button type="delete">Delete Category</button>
+            </form>
           </div>
-      </fieldset>
-      </section>
+        </div>
+      </div>
+        <section class="global" style="flex:1">
+          <h1>Global Notepad</h1>
+            <div class="board">
+                <div class="card"><a>this is an inspirational message for you!</a><br /><a>3beesinatrenchcoat</a></div>
+                <div class="card"><a>i wonder what i can put here?</a><br /><a>800cows</a></div>
+                <div class="card"><a>i like eggs</a><br /><a>sirdoug</a></div>
+                <div class="card"><a>beep bop</a><br /><a>eggaskin</a></div>
+                <div class="card">  <a>Add Item</a>
+                  <form method="get" action="category.html">
+                      <input type="text" id="note" placeholder="New Item" />
+                          
+                          <button type="submit">Add Item</button>
+                  </form> </div>
+              </div>
+        </section>
+      </div>
     </main>
 
     <footer>
-      <hr />
-      <span class="text-reset">Created by Evelyn Gaskin</span>
+      <a >Created by Evelyn Gaskin</a>
       <br />
       <a href="https://github.com/eggaskin/startup260">GitHub</a>
     </footer>

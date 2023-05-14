@@ -2,6 +2,8 @@
 
 * {
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 2vh;
+    /* box-sizing:border-box; */
 }
 
 /* header/navigation */
@@ -10,18 +12,17 @@ nav {
     justify-content: left;
     background-color: rgb(255, 210, 210) !important;
     border:rgb(255, 112, 112) medium solid;
-    padding: 20px;
-    border-radius: 25px;
-    margin:10px;
+    padding: 2vw;
+    border-radius:2vw;
+    margin:1vw;
 }
+/* 10px to 1vw*/
 
-/* header a {
-    text-align: center;
-    justify-content: center;
-    color: rgb(255, 94, 94);
-    font-weight: bold;
+header img {
+    width: 5vw;
+    height: 5vw;
     margin: 1em;
-} */
+}
 
 .nav-active {
     display:flex;
@@ -29,11 +30,12 @@ nav {
     color: darkred;
     text-decoration: none;
     font-weight: bold;
-    margin: 1em;
+    margin: 1vw;
     border-radius:5px;
-    padding: 5px;
+    padding: 1vw;
     border: darkred thin solid;
     background-color: rgb(255, 171, 171);
+    font-size:medium;
 }
 
 .nav-link {
@@ -42,22 +44,42 @@ nav {
     align-items: center;
     color: rgb(255, 94, 94);
     font-weight: bold;
-    margin: 1em;
+    margin: 1vw;
     border-radius:5px;
-    padding: 5px;
+    padding: 1vw;
     background-color: rgb(255, 171, 171);
     border: darkred thin solid;
+    font-size:medium
 }
 
 .userdisplay {
+    justify-content:right;
     text-decoration: none;
     color: hsl(135, 92%, 15%);
     font-weight: bold;
     margin: 1em;
-    border-radius:5px;
-    padding: 15px;
+    border-radius:0.5vw;
+    padding: 2vw;
     background-color: hsl(135, 100%, 84%);
     border: hsl(135, 94%, 14%) thin solid;
+    font-size:medium;
+
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        width: 50vw;
+        justify-content: center;
+    }
+    header {
+        justify-content: center;
+        align-items:center;
+    }
+    #notepadcontainer {
+        flex-direction: column;
+    }
 }
 
 /* body text */
@@ -65,11 +87,16 @@ body {
     display:flex;
     flex-direction: column;
     background-color: rgb(253, 255, 240);
+    height:50vh; /* TODO::*/
+}
+
+html {
+    height:100%;
 }
 
 main {
     display: flex;
-    flex: 1;
+    flex: 2;
     flex-direction: column;
 }
 
@@ -84,11 +111,11 @@ main {
     border-radius: 1em; */
     
     padding: 10px;
-    height: calc(100vh - 110px);
-    overflow-y: scroll;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 200px;
+    height: calc(89vh - 110px);
+    /* overflow-y: scroll; */
+    display: flex;
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+    /* grid-auto-rows: 200px; */
     grid-gap: 1em;
 }
 
@@ -97,22 +124,110 @@ main {
     border-radius:10px;
 
 }
+
 #note {
     border: none;
     padding:20px;
     background-color: rgb(253, 255, 240);
+    font-size:large;
+}
 
-    
+.postit {
+    display:block;
+    width:25vw;
+    height:30vh;
+    margin:2vw;
+    border-radius:0.2vw;
+    font-size: medium;
 }
 
 #catSelect {
     background-color: rgb(255, 212, 255);
-    border-radius:10px;
+    border: rgb(129, 102, 129) medium solid;
+}
+
+#catSelect * {
+    margin:1em;
+    padding: 0.5em;
+    width:20vw
 }
 
 #catSelect select {
-    background-color: rgb(103, 58, 103);
-    border-radius:10px;
+    background-color: rgb(167, 122, 167);
+    border-radius:1vw;
+}
+
+#newCategory {
+    background-color: rgb(255, 212, 255);
+    border-radius:1vw;
+    padding:0.5vw;
+    margin:1em;
+}
+
+#styling {
+    background-color: rgb(139, 162, 192);
+    border: rgb(117, 127, 236) medium solid;    
+}
+
+#styling * {
+    margin:0.5vw;
+}
+
+#login {
+    border: rgb(129, 102, 129) medium solid;
+    background-color: rgb(255, 212, 255);
+}
+
+#login input {
+    background-color:  rgb(255, 212, 255);
+    border-radius:1vw;
+    width: 20vw;
+}
+
+#login * {
+    margin:1em;
+    color:rgb(66, 52, 66);
+}
+
+/* About page text styling */
+main > h1 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em;
+}
+
+main > p {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 1em;
+}
+
+.notelist > li {
+    background-color: rgb(220, 193, 158);
+}
+
+.board {
+    display:grid;
+    grid-gap:1em;
+    grid-auto-flow: column;
+    padding:10px;
+    /* padding: 10px;
+    height: calc(100vh - 110px);
+    overflow-y: scroll;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 1em; */
+}
+
+.card {
+    border:rgb(184, 117, 117) thin solid;
+    padding:5px;
+    background-color: bisque;
+}
+
+#userscontent {
+    flex: 2;
 }
 
 main button {
@@ -128,10 +243,13 @@ main button {
 /* credits/footer */
 footer {
     background-color: rgb(183, 198, 227);
-    display: inline-flex;
+    border: rgb(105, 105, 212) thin solid;
+    /* display: flex;
     justify-content: left;
-    text-align: left;
+    text-align: left; */
     padding:1em;
     border-radius: 0.2em;
-    flex: 0 0 30px;
+    /* flex: 0 0 30px; */
+    flex-shrink:0;
+    font-size:1em;
 }

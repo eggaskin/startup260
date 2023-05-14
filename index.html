@@ -20,14 +20,15 @@
     </header>
 
     <main>      
-      <div class="container">  
-        <div id="notepad">
+      <div class="container" id="notepadcontainer">  
+        <div id="notepad" style="flex:1.5">
                 <form method="get" action="index.html">
                   <input type="text" id="note" placeholder="Make your note here" />
                   <button type="submit" type="button">Note it</button>
                 </form>
         </div>
-        <div id="catSelect">
+        <div class="postit" id="catSelect">
+            <a> Add to Category: </a>
               <select id="select" name="varSelect">
                   <option>grocery list</option>
                   <option selected>to buy</option>
@@ -42,6 +43,7 @@
 
     <footer>
       <a>Created by Evelyn Gaskin</a>
+      <br />
       <a href="https://github.com/eggaskin/startup260">GitHub</a>
     </footer>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
