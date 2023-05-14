@@ -49,18 +49,19 @@ For this deliverable I added the application structure.
 - **Database** - There is a mock category viewing page with different notes from a category, and ability to delete and add notes to categories.
 - **WebSocket** - There is a mock category viewing page with fake global category notes and usernames, and on the notepad page there is a category option for the global category.
 
-## FROM HERE ON IS UNFINISHED
 ## CSS deliverable
 
-For this deliverable I properly styled the application into its final appearance.
-TEMPLATE
-- **Header, footer, and main content body**
-- **Navigation elements** - I dropped the underlines and changed the color for anchor elements.
-- **Responsive to window resizing** - My app looks great on all window sizes and devices
-- **Application elements** - Used good contrast and whitespace
-- **Application text content** - Consistent fonts
-- **Application images** - Still don't have images and so no styling here. 😔
+- **Header, footer, and main content body** - I color coded the header and made it horizontal when there's room, to be changed to a vertical menu if the window is too narrow. The footer is also color coded and is at the base of the page. Both the navigation menu and the footer are similar in design, just different colors.
 
+The main content is also color coded and separated into flexboxes that partition the different aspects of my website so it's not all in one column like it was with the HTML.
+- **Navigation elements** - I made the navigation links in the header's menu buttons, with the page you are on capitalized and a darker color. They still act as links.
+- **Responsive to window resizing** - The content resizes, and the header menu switches orientations when the window is too narrow.
+- **Application elements** - I color code the different "sections" of my website, including "post its" for category selection, styling, and login, and grids for things like note lists and global note boards.
+- **Application text content** - My textual content varies in sizing, color, and thickness.
+- **Application images** - I have an image "logo" in the header navigation bar that resizes with the window.
+
+
+## FROM HERE ON IS UNFINISHED
 ## JavaScript deliverable
 
 For this deliverable I made my application functional to track and display a user's three votes.
