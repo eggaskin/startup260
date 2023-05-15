@@ -23,24 +23,24 @@
         <div class="container" style="flex-direction: row; flex:1" id="userscontent">
           <section class="notelist" style="flex:2; overflow-y:scroll">
             <div class="list">
-                <li><p>apples</p><button>Delete</button></li>
-                <li><p>eggs</p><button>Delete</button></li>
-                <li><p>pesto</p><button>Delete</button></li>
-                <li><p>licorice</p><button>Delete</button></li>
-                <li>
-                    <p>Add Item</p>
+                <div id="title"> Grocery List </div>
+            <!--   <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a> -->
+                <div><div>apples</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
+                <div><div>eggs</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
+                <div><div>pesto</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
+                <div><div>licorice</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
+                <div id="add">
                     <form method="get" action="category.html">
-                        <input type="text" id="note" placeholder="New Item" />
-                            
-                            <button type="submit">Add Item</button>
+                        <div><input type="text" id="note" placeholder="New Item" /></div>
+                            <div id="additem"><button type="submit">Add Item</button></div>
                     </form>
-                </li>
+                  </div>
               </div>
           </section>
           <div class="container" style="flex-direction:column">
             <div class="postit" id="catSelect">
             <form method="get" action="category.html">
-                    <div><label for="select">Category: </label>
+                    <div><h1>Category: </h1>
                         <select id="select" name="varSelect">
                             <option>grocery list</option>
                             <option selected>to buy</option>
@@ -51,12 +51,12 @@
           </div>
           <div class="postit" id="styling"><h1>Styling</h1>
             <form method="get" action="category.html">
-                  <div><label for="catbackground">Background color</label>
+                  <div><label for="catbackground">Background Color:</label>
                   <input type="color" id="catbackground" value="#0000ff" /></div>
-                  <div><legend>Item style</legend>
-                    <label for="radio1">checkboxes</label>
+                  <div><legend>Item Style:</legend>
+                    <label for="radio1">checkbox</label>
                     <input type="radio" id="radio1" name="varRadio" value="radio1"  />
-                    <label for="radio2">list items</label>
+                    <label for="radio2">items</label>
                     <input type="radio" id="radio2" name="varRadio" value="radio2" checked /></div>
                   <button type="delete">Delete Category</button>
             </form>

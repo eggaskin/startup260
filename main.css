@@ -8,8 +8,9 @@
 
 /* header/navigation */
 nav {
+    margin:auto;
     display: flex;
-    justify-content: left;
+    /* justify-content: left; */
     background-color: rgb(255, 210, 210) !important;
     border:rgb(255, 112, 112) medium solid;
     padding: 2vw;
@@ -71,7 +72,7 @@ header img {
         flex-direction: column;
         align-items: center;
         width: 50vw;
-        justify-content: center;
+        margin:auto;
     }
     header {
         justify-content: center;
@@ -87,7 +88,7 @@ body {
     display:flex;
     flex-direction: column;
     background-color: rgb(253, 255, 240);
-    height:50vh; /* TODO::*/
+    height:50vh;
 }
 
 html {
@@ -101,15 +102,6 @@ main {
 }
 
 .container {
-    /* display: grid;
-    overflow-y: scroll;
-    flex-direction: column;
-    flex: 1;
-    background-color: rgb(198, 187, 172);
-    padding: 1em;
-    margin: 1em;
-    border-radius: 1em; */
-    
     padding: 10px;
     height: calc(89vh - 110px);
     /* overflow-y: scroll; */
@@ -141,20 +133,27 @@ main {
     font-size: medium;
 }
 
+.postit h1 {
+    font-weight: bold;
+    margin:1vw;
+    padding:1vw;
+}
+
 #catSelect {
     background-color: rgb(255, 212, 255);
     border: rgb(129, 102, 129) medium solid;
 }
 
-#catSelect * {
-    margin:1em;
-    padding: 0.5em;
-    width:20vw
+#catSelect select {
+    background-color: rgb(174, 141, 174);
+    border-radius:1vw;
+    margin: 1vw;
+    padding:1vw;
+    width: 15vw;
 }
 
-#catSelect select {
-    background-color: rgb(167, 122, 167);
-    border-radius:1vw;
+.postit input {
+    width: 15vw;
 }
 
 #newCategory {
@@ -173,36 +172,58 @@ main {
     margin:0.5vw;
 }
 
-#login {
-    border: rgb(129, 102, 129) medium solid;
-    background-color: rgb(255, 212, 255);
+/* Category List styling */
+.list > div {
+    border:rgb(220, 193, 158) thin solid;
+    background-color: rgb(248, 246, 196);
+    padding: 0.5vw;
+    display:flex;
+    flex-direction: row;
 }
 
-#login input {
-    background-color:  rgb(255, 212, 255);
-    border-radius:1vw;
-    width: 20vw;
+.list > div > div {
+    margin: 2vw;
 }
 
-#login * {
-    margin:1em;
-    color:rgb(66, 52, 66);
+.list input::placeholder {
+    font-size: medium;
+    color: black;
+    opacity: 100%;
+    background-color: rgb(248, 246, 196);
 }
 
-/* About page text styling */
-main > h1 {
-    text-align: center;
-    font-size: 2em;
+.list input {
+    padding:0px;
+    margin:0px;
+}
+
+#title {
     font-weight: bold;
-    margin: 1em;
+    font-size: large;
+    margin:2vw;
+    padding: 2vw;
 }
 
-main > p {
-    text-align: center;
-    font-size: 1.5em;
-    margin: 1em;
+#delbutton {
+    margin:0px;
+    margin-left:auto;
 }
 
+#additem {
+    margin:0px;
+    margin-left:auto;
+}
+
+#add {
+    border:rgb(220, 193, 158) thin dashed;
+}
+
+#add form {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Global Notepad section styling */
 .notelist > li {
     background-color: rgb(220, 193, 158);
 }
@@ -228,6 +249,37 @@ main > p {
 
 #userscontent {
     flex: 2;
+}
+
+/* About page text styling */
+#login {
+    border: rgb(129, 102, 129) medium solid;
+    background-color: rgb(255, 212, 255);
+}
+
+#login input {
+    background-color:  rgb(255, 212, 255);
+    border-radius:1vw;
+    width: 15vw;
+    padding: 0.5vw;
+    margin:1vw;
+}
+
+#login * {
+    color:rgb(66, 52, 66);
+}
+
+main > h1 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em;
+}
+
+main > p {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 1em;
 }
 
 main button {
