@@ -181,6 +181,23 @@ main {
     flex-direction: row;
 }
 
+.list >div:hover {
+    animation: shrink 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .list > div > div {
     margin: 2vw;
 }

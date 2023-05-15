@@ -57,8 +57,10 @@ The main content is also color coded and separated into flexboxes that partition
 - **Navigation elements** - I made the navigation links in the header's menu buttons, with the page you are on capitalized and a darker color. They still act as links.
 - **Responsive to window resizing** - The content resizes, and the header menu switches orientations when the window is too narrow.
 - **Application elements** - I color code the different "sections" of my website, including "post its" for category selection, styling, and login, and grids for things like note lists and global note boards.
+
+I animated the category list items when hovered over.
 - **Application text content** - My textual content varies in sizing, color, and thickness.
-- **Application images** - I have an image "logo" in the header navigation bar that resizes with the window.
+- **Application images** - I have an image "logo" in the header navigation bar that resizes with the window. I also have delete icon images for the item deletion in the categories page.
 
 
 ## FROM HERE ON IS UNFINISHED
