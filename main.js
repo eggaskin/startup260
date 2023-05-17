@@ -15,12 +15,6 @@ SEPARATE JS FILES FOR EACH PAGE
 ADD CHECKBOX FUNCTIONALITY
 */
 
-function login() {
-    const nameEl = document.querySelector("#username");
-    localStorage.setItem("userName", nameEl.value);
-    window.location.href = "login.html"; //TODO: what does this do
-}  
-
 class Category {
     constructor(name, color, style, notes) {
         this.name = name;
@@ -55,21 +49,6 @@ class Category {
     }
 }
 
-
-function populateCategory(catname) {
-    const listEl = document.querySelector(".list");
-    const categories = JSON.parse(localStorage.getItem("categories"));
-    const cat = categories[catname]; //TODO: this might be undefined
-    const notes = cat.notes;
-
-    for (const [i, note] of notes.entries()) {
-        const noteEl = document.createElement("div");
-        noteEl.innerHTML = "<div>"+note+"</div><div id=\"delbutton\"><button onclick=\"deleteNote()\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
-        listEl.appendChild(noteEl);
-    }
-    doStyle(cat.color,cat.style);
-}
-
 function addNote(populateCat=false) {
     let text = document.querySelector("#note");
     let note = text.value;
@@ -81,35 +60,6 @@ function addNote(populateCat=false) {
         listEl.appendChild(noteEl);
     }
     cat.add(note);
-}
-
-function deleteNote() {
-    const listEl = document.querySelector(".list");
-    listEl.removeChild(this); //TODO: fix this, get the right one
-    cat.delete(note);
-}
-
-function getStyle() {
-    const color = document.querySelector("#color").value;
-    const format = document.querySelector("input[name=\"format\"]:checked").value;
-    doStyle(color,format);
-    cat.style(color,format);
-}
-
-function doStyle(color,format) {
-    // change background color of cat items
-    // change format of cat items
-    const divEls = document.querySelectorAll(".list > div");
-    for (const [i, div] of divEls.entries()) {
-        div.style.backgroundColor = color;
-        if (format == "check") {
-            //TODO: add checkbox
-            div.innerHTML = "<div>"+div.innerHTML+"</div><div id=\"delbutton\"><button onclick=\"deleteNote()\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
-        } else {
-            div.innerHTML = "<div>"+div.innerHTML+"</div><div id=\"delbutton\"><button onclick=\"deleteNote()\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
-        }
-    }
-    //.list > div  background-color change to color
 }
 
 function changeCategory() {
@@ -136,4 +86,11 @@ function updateOptions() {
         // add all again or just if they're new?? TODO:
     }
 }
+
+function updateUser() {
+    const userEl = document.querySelector("#uname");
+    userEl.innerHTML = localStorage.getItem("userName");
+}
+
 updateOptions();
+updateUser();

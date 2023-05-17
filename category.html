@@ -14,7 +14,7 @@
         <a href="index.html" class="nav-link">Notepad</a>
         <a href="category.html" class="nav-active">CATEGORIES</a>
         <a href="login.html" class="nav-link">Login/About</a>
-        <button class="userdisplay" >Hi,<b>Username</b> </button>
+        <button class="userdisplay" >Hi,<b id="uname">Username</b> </button>
       </nav>
     </header>
 
@@ -24,11 +24,6 @@
           <section class="notelist" style="flex:2; overflow-y:scroll">
             <div id="title"> Grocery List </div>
             <div class="list">
-            <!--   <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a> -->
-                <div><div>apples</div><div id="delbutton"><button onclick="deleteNote()"><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
-                <div><div>eggs</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
-                <div><div>pesto</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
-                <div><div>licorice</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
                 <div id="add">
                     <form method="get" action="category.html">
                         <div><input type="text" id="note" placeholder="New Item" /></div>

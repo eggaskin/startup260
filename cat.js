@@ -33,11 +33,22 @@ class Category {
     }
 }
 
+let cat = new Category("test", "red", "list", ["test1", "test2", "test3"]);
 
 function populateCategory(catname) {
+    const titleEl = document.querySelector("#title");
+    titleEl.innerHTML = catname;
     const listEl = document.querySelector(".list");
+    // clear list
+    listEl.innerHTML = `<div id="add">
+    <form method="get" action="category.html">
+        <div><input type="text" id="note" placeholder="New Item" /></div>
+            <div id="additem"><button onclick="addNote(true)">Add Item</button></div>
+    </form>
+  </div>`;
+//TODO: keep this at the bottom!!
     const categories = JSON.parse(localStorage.getItem("categories"));
-    const cat = categories[catname]; //TODO: this might be undefined
+    cat = categories[catname]; //TODO: this might be undefined
     const notes = cat.notes;
 
     for (const [i, note] of notes.entries()) {
@@ -58,6 +69,8 @@ function addNote(populateCat=false) {
         noteEl.innerHTML = "<div>"+note+"</div><div id=\"delbutton\"><button onclick=\"deleteNote()\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
         listEl.appendChild(noteEl);
     }
+    // get current category
+    const catname = document.querySelector("#title").innerHTML;
     cat.add(note);
 }
 
@@ -113,6 +126,12 @@ function updateOptions() {
         selectEl.appendChild(optionEl);
         // add all again or just if they're new?? TODO:
     }
+    cat = categories[selectEl.value];
+}
+
+function updateUser() {
+    const userEl = document.querySelector("#uname");
+    userEl.innerHTML = localStorage.getItem("userName");
 }
 
 if (localStorage.getItem("categories") == null) {
@@ -121,3 +140,4 @@ if (localStorage.getItem("categories") == null) {
 const switchCat = document.querySelector("#switchcat");
 switchCat.addEventListener("click", changeCategory());
 updateOptions();
+updateUser();
