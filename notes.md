@@ -2,8 +2,8 @@
 
 - [Web Servers](./notes/web.md)
 - [HTML](./notes/html.md)
-- [CSS]
-- [JavaScript]
+- [CSS](./notes/css.md)
+- [JavaScript](./notes/js.md)
 
 
 ## KEY INFO

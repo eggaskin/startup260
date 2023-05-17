@@ -25,14 +25,14 @@
             <div id="title"> Grocery List </div>
             <div class="list">
             <!--   <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a> -->
-                <div><div>apples</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
+                <div><div>apples</div><div id="delbutton"><button onclick="deleteNote()"><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
                 <div><div>eggs</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
                 <div><div>pesto</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
                 <div><div>licorice</div><div id="delbutton"><button><img src="delete.png" alt="Delete" width="25vw" height="25vw"></button></div></div>
                 <div id="add">
                     <form method="get" action="category.html">
                         <div><input type="text" id="note" placeholder="New Item" /></div>
-                            <div id="additem"><button type="submit">Add Item</button></div>
+                            <div id="additem"><button onclick="addNote(true)">Add Item</button></div>
                     </form>
                   </div>
               </div>
@@ -42,23 +42,21 @@
             <form method="get" action="category.html">
                     <div><h1>Category: </h1>
                         <select id="select" name="varSelect">
-                            <option>grocery list</option>
-                            <option selected>to buy</option>
-                            <option>people to respond to</option>
+                            <option selected>grocery list</option>
                         </select></div>
-                    <button type="submit">View Category</button>
+                    <button type="submit" id="switchcat" onclick="changeCategory()">View Category</button>
             </form>
           </div>
           <div class="postit" id="styling"><h1>Styling</h1>
             <form method="get" action="category.html">
                   <div><label for="catbackground">Background Color:</label>
-                  <input type="color" id="catbackground" value="#0000ff" /></div>
+                  <input type="color" id="color" value="#0000ff" /></div>
                   <div><legend>Item Style:</legend>
-                    <label for="radio1">checkbox</label>
-                    <input type="radio" id="radio1" name="varRadio" value="radio1"  />
-                    <label for="radio2">items</label>
-                    <input type="radio" id="radio2" name="varRadio" value="radio2" checked /></div>
-                  <button type="delete">Delete Category</button>
+                    <label for="checkbox">checkbox</label>
+                    <input type="radio" id="checkbox" name="format" value="checkbox"  />
+                    <label for="items">items</label>
+                    <input type="radio" id="items" name="format" value="items" checked /></div>
+                    <button onclick="getStyle()">Style</button><button type="delete">Delete Category</button>
             </form>
           </div>
         </div>
@@ -87,6 +85,6 @@
       <a href="https://github.com/eggaskin/startup260">GitHub</a>
     </footer>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
-
+    <script src="cat.js"></script>
   </body>
 </html>
