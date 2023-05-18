@@ -116,4 +116,24 @@ This is how you interact with and edit the HTML!
 '''html
 <button onclick='alert("clicked")'>click me</button>
 '''
+* *USE FUNCTION OBJECT* not the actual call. ex. function not function()
 
+### Modules
+* use 'export' keyword to export a function or variable ex. 'export function() {}'
+* use 'import' keyword to import a function or variable ex. 'import {function} from './file.js'
+
+* inline? use 'type="module"' in script tag.
+
+'''javascript
+function hello() = { console.log('hello'); }
+module.exports = { function };
+// then
+const greet = require('./file.js');
+greet.hello();
+'''
+
+* 'window.funcName = importedFunc' lets function be called in global scope
+
+### Async
+* JS is single threaded
+* everything must be asynchronous!! can't run forever.

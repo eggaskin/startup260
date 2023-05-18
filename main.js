@@ -7,8 +7,10 @@ ADD CHECKBOX FUNCTIONALITY
 GLOBAL NOTEPAD!!! MOVE TO MAIN PAGE??
 
 TODO: MAKE GLOBAL NOTEPAD FLEXY!!
+
 TODO: reorder about page so login/about and then how to use
 */
+
 
 class Category {
     constructor(name, color, style, notes) {
