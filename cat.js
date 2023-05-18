@@ -45,6 +45,7 @@ function populateCategory(catname) {
 </form>`;
     addEl.id = "add";
     listEl.appendChild(addEl);
+    // FIX STYLING! TODO:
     doStyle(categories[catname].color,categories[catname].style);
 }
 
@@ -86,12 +87,15 @@ function getStyle() {
 }
 
 function doStyle(color,format) {
-    //TODO: fix styling
     // change background color of cat items
     // change format of cat items
     const divEls = document.querySelectorAll(".list > div");
+    const inEl = document.querySelector(".list input");
+    inEl.style.backgroundColor = newShade(color,+0.4); 
+    //TODO: also button colors
     for (const [i, div] of divEls.entries()) {
         div.style.backgroundColor = color;
+        div.style.borderColor = newShade(color,-0.35);
         if (format == "check") {
             //TODO: add checkbox
             //div.innerHTML = "<div>"+div.innerHTML+"</div><div id=\"delbutton\"><button onclick=\"deleteNote.call(this)\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
@@ -107,12 +111,76 @@ function doStyle(color,format) {
     //.list > div  background-color change to color
 }
 
+// credit to https://natclark.com/tutorials/javascript-lighten-darken-hex-color/
+// https://www.sitepoint.com/javascript-generate-lighter-darker-color/
+function newShade(hex, lum) {
+    // validate hex string
+	hex = String(hex).replace(/[^0-9a-f]/gi, '');
+	if (hex.length < 6) {
+		hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+	}
+	lum = lum || 0;
+
+	// convert to decimal and change luminosity
+	var rgb = "#", c, i;
+	for (i = 0; i < 3; i++) {
+		c = parseInt(hex.substr(i*2,2), 16);
+		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+		rgb += ("00"+c).substr(c.length);
+	}
+
+	return rgb;
+
+    // hexColor = hexColor.replace(`#`, ``);
+    if (hexColor.length === 6) {
+        const decimalColor = parseInt(hexColor, 16);
+        let r = (decimalColor >> 16) + magnitude;
+        r > 255 && (r = 255);
+        r < 0 && (r = 0);
+        let g = (decimalColor & 0x0000ff) + magnitude;
+        g > 255 && (g = 255);
+        g < 0 && (g = 0);
+        let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
+        b > 255 && (b = 255);
+        b < 0 && (b = 0);
+        return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
+    } else {
+        return hexColor;
+    }
+
+    var usePound = false;
+  
+    if (col[0] == "#") {
+        col = col.slice(1);
+        usePound = true;
+    }
+ 
+    var num = parseInt(col,16);
+ 
+    var r = (num >> 16) + amt;
+ 
+    if (r > 255) r = 255;
+    else if  (r < 0) r = 0;
+ 
+    var b = ((num >> 8) & 0x00FF) + amt;
+ 
+    if (b > 255) b = 255;
+    else if  (b < 0) b = 0;
+ 
+    var g = (num & 0x0000FF) + amt;
+ 
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+ 
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+}
+
 function changeCategory() {
     console.log("category changed");
     const catname = document.querySelector("#select").value;
+    localStorage.setItem("currentCat", catname);
     populateCategory(catname);
     //change checked values!!
-    localStorage.setItem("currentCat", catname);
 }
 
 function addCategory() {
@@ -134,7 +202,7 @@ function updateOptions() {
     }
     selectEl.value = localStorage.getItem("currentCat");
     // cat = categories[selectEl.value];
-    // populateCategory(selectEl.value);
+    populateCategory(selectEl.value);
 }
 
 function updateUser() {

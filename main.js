@@ -46,10 +46,10 @@ function addNote(populateCat=false) {
     text.value = "";
 }
 
-function changeCategory() {
-    const catname = document.querySelector("#select").value;
-    populateCategory(catname);
-}
+// function changeCategory() {
+//     const catname = document.querySelector("#select").value;
+//     populateCategory(catname);
+// }
 
 function addCategory() {
     const catname = document.querySelector("#newCategory").value;

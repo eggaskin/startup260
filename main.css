@@ -206,7 +206,7 @@ main {
     font-size: medium;
     color: black;
     opacity: 100%;
-    background-color: rgb(248, 246, 196);
+    /* background-color: rgb(248, 246, 196); */
 }
 
 .list input {
