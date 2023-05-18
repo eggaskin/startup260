@@ -79,7 +79,6 @@ function deleteNote() {
     localStorage.setItem("categories", JSON.stringify(categories));
 }
 
-
 function getStyle() {
     const color = document.querySelector("#color").value;
     const format = document.querySelector("input[name=\"format\"]:checked").value;
@@ -130,49 +129,6 @@ function newShade(hex, lum) {
 	}
 
 	return rgb;
-
-    // hexColor = hexColor.replace(`#`, ``);
-    if (hexColor.length === 6) {
-        const decimalColor = parseInt(hexColor, 16);
-        let r = (decimalColor >> 16) + magnitude;
-        r > 255 && (r = 255);
-        r < 0 && (r = 0);
-        let g = (decimalColor & 0x0000ff) + magnitude;
-        g > 255 && (g = 255);
-        g < 0 && (g = 0);
-        let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
-        b > 255 && (b = 255);
-        b < 0 && (b = 0);
-        return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
-    } else {
-        return hexColor;
-    }
-
-    var usePound = false;
-  
-    if (col[0] == "#") {
-        col = col.slice(1);
-        usePound = true;
-    }
- 
-    var num = parseInt(col,16);
- 
-    var r = (num >> 16) + amt;
- 
-    if (r > 255) r = 255;
-    else if  (r < 0) r = 0;
- 
-    var b = ((num >> 8) & 0x00FF) + amt;
- 
-    if (b > 255) b = 255;
-    else if  (b < 0) b = 0;
- 
-    var g = (num & 0x0000FF) + amt;
- 
-    if (g > 255) g = 255;
-    else if (g < 0) g = 0;
- 
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
 function changeCategory() {
@@ -189,6 +145,17 @@ function addCategory() {
     categories[catname] = new Category(catname, "#f8f6c4", "check", []);
     localStorage.setItem("categories", JSON.stringify(categories));
     updateOptions();
+}
+
+function deleteCategory() {
+    const catname = document.querySelector("#title").innerHTML;
+    let categories = JSON.parse(localStorage.getItem("categories"));
+    delete categories[catname];
+    // categories = categories.filter((el) => el != catname); //TODO:
+    localStorage.setItem("categories", JSON.stringify(categories));
+    localStorage.setItem("currentCat", Object.keys(categories)[0]);
+    updateOptions();
+
 }
 
 function updateOptions() {

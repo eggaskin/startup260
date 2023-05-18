@@ -5,6 +5,9 @@ SEPARATE JS FILES FOR EACH PAGE
 ADD COLOR THEMING FOR CATEGORIES
 ADD CHECKBOX FUNCTIONALITY
 GLOBAL NOTEPAD!!! MOVE TO MAIN PAGE??
+
+TODO: MAKE GLOBAL NOTEPAD FLEXY!!
+TODO: reorder about page so login/about and then how to use
 */
 
 class Category {
@@ -45,11 +48,6 @@ function addNote(populateCat=false) {
     // clear input
     text.value = "";
 }
-
-// function changeCategory() {
-//     const catname = document.querySelector("#select").value;
-//     populateCategory(catname);
-// }
 
 function addCategory() {
     const catname = document.querySelector("#newCategory").value;

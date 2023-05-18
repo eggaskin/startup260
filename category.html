@@ -19,9 +19,9 @@
     </header>
 
     <main>
-      <div class="container" style="flex-direction:column">
+      <div class="container" id="maincontain" style="flex-direction:column">
         <div class="container" style="flex-direction: row; flex:1" id="userscontent">
-          <section class="notelist" style="flex:2; overflow-y:scroll">
+          <section class="notelist" >
             <div id="title"> Grocery List </div>
             <div class="list">
                 <div id="add">
@@ -52,12 +52,12 @@
                     <input type="radio" id="checkbox" name="format" value="checkbox"  />
                     <label for="items">items</label>
                     <input type="radio" id="items" name="format" value="items" checked /></div>
-                    <button onclick="getStyle()">Style</button><button type="delete">Delete Category</button>
+                    <button onclick="getStyle()">Style</button><button type="delete" onclick="deleteCategory()">Delete Category</button>
             </form>
           </div>
         </div>
       </div>
-        <section class="global" style="flex:1">
+        <!-- <section class="global" style="flex:1">
           <h1>Global Notepad</h1>
             <div class="board">
                 <div class="card"><a>this is an inspirational message for you!</a><br /><a>3beesinatrenchcoat</a></div>
@@ -71,7 +71,7 @@
                           <button type="submit">Add Item</button>
                   </form> </div>
               </div>
-        </section>
+        </section> -->
       </div>
     </main>
 

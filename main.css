@@ -88,7 +88,7 @@ body {
     display:flex;
     flex-direction: column;
     background-color: rgb(253, 255, 240);
-    height:50vh;
+    height:98vh;
 }
 
 html {
@@ -103,7 +103,7 @@ main {
 
 .container {
     padding: 10px;
-    height: calc(89vh - 110px);
+    height: calc(40vh ); 
     /* overflow-y: scroll; */
     display: flex;
     /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
@@ -240,9 +240,23 @@ main {
     flex-direction: row;
 }
 
-/* Global Notepad section styling */
 .notelist > li {
     background-color: rgb(220, 193, 158);
+}
+
+#maincontain {
+    height: 40vh;
+}
+
+.notelist {
+    flex:1; 
+    overflow-y:scroll;
+    height: 60vh;
+}
+
+/* Global Notepad section styling */
+.global {
+    height: 50vh;
 }
 
 .board {
@@ -265,7 +279,7 @@ main {
 }
 
 #userscontent {
-    flex: 2;
+    flex: 1;
 }
 
 /* About page text styling */
@@ -286,14 +300,16 @@ main {
     color:rgb(66, 52, 66);
 }
 
-main > h1 {
+.BESTYLED {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
     margin: 1em;
 }
 
-main > p {
+
+
+.bestyled {
     text-align: center;
     font-size: 1.5em;
     margin: 1em;
