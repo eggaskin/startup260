@@ -1,18 +1,10 @@
 /*
-*  javascript for delete buttons
-* new category buttons
-* add notes to categories
-* delete notes
 * global datastructure
-* login buttons
-
-use array of strings for notes
-use array of objects for categories
-use array of objects for users
 
 SEPARATE JS FILES FOR EACH PAGE
-
+ADD COLOR THEMING FOR CATEGORIES
 ADD CHECKBOX FUNCTIONALITY
+GLOBAL NOTEPAD!!! MOVE TO MAIN PAGE??
 */
 
 class Category {
@@ -22,31 +14,13 @@ class Category {
         this.style = style;
         this.notes = notes;
     }
+}
 
-    add(note) {
-        this.notes.push(note);
-        // update local storage
-        const categories = JSON.parse(localStorage.getItem("categories"));
-        categories[this.name] = this;
-        localStorage.setItem("categories", JSON.stringify(categories));
-    }
-
-    delete(note) {
-        // delete note
-        let i = this.notes.indexOf(note);
-        if (i > -1) {
-            this.notes[i] = this.notes.splice(i, 1);
-        }
-    }
-
-    style(color,style) {
-        this.color = color;
-        this.style = style;
-        // update local storage
-        const categories = JSON.parse(localStorage.getItem("categories"));
-        categories[this.name] = this;
-        localStorage.setItem("categories", JSON.stringify(categories));
-    }
+function getCurrentCat() {
+    // const catname = document.querySelector("#title").innerHTML;
+    const catname = localStorage.getItem("currentCat");
+    let categories = JSON.parse(localStorage.getItem("categories"));
+    return [categories, categories[catname], catname];
 }
 
 function addNote(populateCat=false) {
@@ -56,14 +30,24 @@ function addNote(populateCat=false) {
     if (populateCat) {
         const listEl = document.querySelector(".list");
         const noteEl = document.createElement("div");
-        noteEl.innerHTML = "<div>"+note+"</div><div id=\"delbutton\"><button onclick=\"deleteNote()\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
+        noteEl.innerHTML = "<div>"+note+"</div><div id=\"delbutton\"><button onclick=\"deleteNote.call(this)\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
         listEl.appendChild(noteEl);
     }
-    cat.add(note);
+    // get current category
+    const catname = document.querySelector("#select").value;
+    let categories = JSON.parse(localStorage.getItem("categories"));
+    let cat = categories[catname];
+    // cat.add(note);
+    cat.notes.push(note);
+    // update local storage
+    categories[catname] = cat;
+    localStorage.setItem("categories", JSON.stringify(categories));
+    // clear input
+    text.value = "";
 }
 
 function changeCategory() {
-    const catname = document.querySelector("#select").value; //TODO: is this right??
+    const catname = document.querySelector("#select").value;
     populateCategory(catname);
 }
 
@@ -73,6 +57,7 @@ function addCategory() {
     categories[catname] = new Category(catname, "#f8f6c4", "check", []);
     localStorage.setItem("categories", JSON.stringify(categories));
     updateOptions();
+    document.querySelector("#newCategory").value = "";
 }
 
 function updateOptions() {
@@ -83,7 +68,6 @@ function updateOptions() {
         const optionEl = document.createElement("option");
         optionEl.innerHTML = cat;
         selectEl.appendChild(optionEl);
-        // add all again or just if they're new?? TODO:
     }
 }
 

@@ -14,7 +14,7 @@
         <a href="index.html" class="nav-link">Notepad</a>
         <a href="category.html" class="nav-active">CATEGORIES</a>
         <a href="login.html" class="nav-link">Login/About</a>
-        <button class="userdisplay" >Hi,<b id="uname">Username</b> </button>
+        <button class="userdisplay" >Hi,  <b id="uname">Username</b> </button>
       </nav>
     </header>
 
@@ -29,7 +29,7 @@
                         <div><input type="text" id="note" placeholder="New Item" /></div>
                             <div id="additem"><button onclick="addNote(true)">Add Item</button></div>
                     </form>
-                  </div>
+                </div>
               </div>
           </section>
           <div class="container" style="flex-direction:column">
@@ -37,9 +37,9 @@
             <form method="get" action="category.html">
                     <div><h1>Category: </h1>
                         <select id="select" name="varSelect">
-                            <option selected>grocery list</option>
+                            <!-- <option >grocery list</option> -->
                         </select></div>
-                    <button type="submit" id="switchcat" onclick="changeCategory()">View Category</button>
+                    <button id="switchcat" onclick="changeCategory()">View Category</button>
             </form>
           </div>
           <div class="postit" id="styling"><h1>Styling</h1>
