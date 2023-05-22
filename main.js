@@ -59,6 +59,9 @@ function updateOptions() {
 
 function updateUser() {
     const userEl = document.querySelector("#uname");
+    if (localStorage.getItem("userName") == null) {
+        localStorage.setItem("userName", "Anon")
+    } 
     userEl.innerHTML = localStorage.getItem("userName");
 }
 
@@ -69,9 +72,14 @@ function getUser() {
 function updateNotepad() {
     const boardEl = document.querySelector(".board");
     // remove last 4 child elements
-//    for (let i = 0; i < 4; i++) {
-//         boardEl.removeChild(boardEl.lastChild);
-//     }
+   while (boardEl.childElementCount > 1) {
+        boardEl.removeChild(boardEl.lastChild);
+    }
+    // boardEl.innerHTML = `<div class="card"> 
+    // <form method="get" >
+    //     <input type="text" id="notepadnew" placeholder="new item" />
+    //         <button onclick="addNotepad()">Add Item</button>
+    // </form> </div>`;
     // add 4 most recent notepad notes
     const notepad = JSON.parse(localStorage.getItem("notepad"));
     for (const note of notepad.slice(-4)) {
@@ -91,6 +99,27 @@ function addNotepad() {
 if (localStorage.getItem("notepad") == null) {
     localStorage.setItem("notepad", JSON.stringify([['this is an inspirational quote','trenchcoat'],['i wonder what I can put here?','800cows'],['i like eggs','sirdoug'],['beep bop','roboto']]));
 }
+if (localStorage.getItem("categories") == null) {
+    localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
+}
+if (localStorage.getItem("currentCat") == null) {
+    localStorage.setItem("currentCat", "grocery list");
+}
 updateOptions();
 updateUser();
 updateNotepad();
+
+function addManual(note,user) {
+    const notepad = JSON.parse(localStorage.getItem("notepad"));
+    notepad.push([note,user]);
+    localStorage.setItem("notepad", JSON.stringify(notepad));
+}
+
+setInterval(() => {
+    // list of random messages
+    const randmessages = ["this is a random message", "i'm a little teapot", "go cougs", "what wonderful weather", "i need a recipe for cookies","tea?"];
+    const randusers = ["HAL","inigo montoya","justsomeguy", "800cows", "sirdoug", "robot","clyde", "prof"];
+    addManual(randmessages[Math.floor(Math.random() * randmessages.length)],randusers[Math.floor(Math.random() * randusers.length)]);
+    updateNotepad();
+  }, 5000);
+  

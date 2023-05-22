@@ -174,6 +174,9 @@ function updateOptions() {
 
 function updateUser() {
     const userEl = document.querySelector("#uname");
+    if (localStorage.getItem("userName") == null) {
+        localStorage.setItem("userName", "Anon")
+    } 
     userEl.innerHTML = localStorage.getItem("userName");
 }
 

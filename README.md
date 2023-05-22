@@ -51,14 +51,10 @@ For this deliverable I added the application structure.
 
 ## CSS deliverable
 
-- **Header, footer, and main content body** - I color coded the header and made it horizontal when there's room, to be changed to a vertical menu if the window is too narrow. The footer is also color coded and is at the base of the page. Both the navigation menu and the footer are similar in design, just different colors.
-
-The main content is also color coded and separated into flexboxes that partition the different aspects of my website so it's not all in one column like it was with the HTML.
+- **Header, footer, and main content body** - I color coded the header and made it horizontal when there's room, to be changed to a vertical menu if the window is too narrow. The footer is also color coded and is at the base of the page. Both the navigation menu and the footer are similar in design, just different colors. The main content is also color coded and separated into flexboxes that partition the different aspects of my website so it's not all in one column like it was with the HTML.
 - **Navigation elements** - I made the navigation links in the header's menu buttons, with the page you are on capitalized and a darker color. They still act as links.
 - **Responsive to window resizing** - The content resizes, and the header menu switches orientations when the window is too narrow.
-- **Application elements** - I color code the different "sections" of my website, including "post its" for category selection, styling, and login, and grids for things like note lists and global note boards.
-
-I animated the category list items when hovered over.
+- **Application elements** - I color code the different "sections" of my website, including "post its" for category selection, styling, and login, and grids for things like note lists and global note boards. I animated the category list items when hovered over.
 - **Application text content** - My textual content varies in sizing, color, and thickness.
 - **Application images** - I have an image "logo" in the header navigation bar that resizes with the window. I also have delete icon images for the item deletion in the categories page.
 
@@ -67,9 +63,7 @@ I animated the category list items when hovered over.
 
 - **login** - The user can enter a username on the login page which is then displayed on every page on the top navigation bar. It is saved in localStorage so it persists between sessions.
 - **database** - Notes are added to database, which is for now a JSON stored in localStorage. The DOM is updated to reflect changes to this database of categories and notes in the category options and category notes display.
-- **WebSocket** - Global Notepad has 4 fake notes and the interface for submitting notes to the global 'message board'. This will be replaced and the data will be gotten from the WebSocket later. 
-
-You can add notes to it and your own username will be displayed but there is currently no data from other users. (it is currently all in localStorage)
+- **WebSocket** - Global Notepad has 4 fake notes and the interface for submitting notes to the global 'message board'. This will be replaced and the data will be gotten from the WebSocket later. These update with mock random messages from other users every few seconds.
 - **application logic** - You can change the styling of categories which changes their display color. You can add and delete notes from categories, and add and delete categories themselves.
 
 
