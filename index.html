@@ -15,7 +15,7 @@
         <a href="category.html" class="nav-link">Categories</a>
         <a href="login.html" class="nav-link">Login/About</a>
         <!-- <button type="button" class="btn btn-lg btn-outline-info" disabled>Hi,<b>Username</b> </button> -->
-        <button class="userdisplay" >Hi,<b id="uname">Username</b> </button>
+        <button class="userdisplay" >Hi,  <b id="uname">Username</b> </button>
       </nav>
     </header>
 
@@ -39,15 +39,10 @@
       <section class="global" style="flex:2">
         <h1>Global Notepad</h1>
           <div class="board">
-              <div class="card"><a>this is an inspirational message for you!</a><br /><a>3beesinatrenchcoat</a></div>
-              <div class="card"><a>i wonder what i can put here?</a><br /><a>800cows</a></div>
-              <div class="card"><a>i like eggs</a><br /><a>sirdoug</a></div>
-              <div class="card"><a>beep bop</a><br /><a>eggaskin</a></div>
-              <div class="card">  <a>Add Item</a>
-                <form method="get" action="category.html">
-                    <input type="text" id="note" placeholder="New Item" />
-                        
-                        <button type="submit">Add Item</button>
+              <div class="card"> 
+                <form method="get" >
+                    <input type="text" id="notepadnew" placeholder="new item" />
+                        <button onclick="addNotepad()">Add Item</button>
                 </form> </div>
             </div>
       </section> 

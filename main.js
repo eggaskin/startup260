@@ -1,17 +1,3 @@
-/*
-* global datastructure
-
-SEPARATE JS FILES FOR EACH PAGE
-ADD COLOR THEMING FOR CATEGORIES
-ADD CHECKBOX FUNCTIONALITY
-GLOBAL NOTEPAD!!! MOVE TO MAIN PAGE??
-
-TODO: MAKE GLOBAL NOTEPAD FLEXY!!
-
-TODO: reorder about page so login/about and then how to use
-*/
-
-
 class Category {
     constructor(name, color, style, notes) {
         this.name = name;
@@ -76,5 +62,35 @@ function updateUser() {
     userEl.innerHTML = localStorage.getItem("userName");
 }
 
+function getUser() {
+    return localStorage.getItem("userName");
+}
+
+function updateNotepad() {
+    const boardEl = document.querySelector(".board");
+    // remove last 4 child elements
+//    for (let i = 0; i < 4; i++) {
+//         boardEl.removeChild(boardEl.lastChild);
+//     }
+    // add 4 most recent notepad notes
+    const notepad = JSON.parse(localStorage.getItem("notepad"));
+    for (const note of notepad.slice(-4)) {
+        const noteEl = document.createElement("div");
+        noteEl.innerHTML = `<div class="card"><a>`+note[0]+`</a><br /><div class="user">`+note[1]+`</div></div>`;
+        boardEl.appendChild(noteEl);
+    }
+}
+
+function addNotepad() {
+    const newNote = document.querySelector("#notepadnew").value;
+    const notepad = JSON.parse(localStorage.getItem("notepad"));
+    notepad.push([newNote,getUser()]);
+    localStorage.setItem("notepad", JSON.stringify(notepad));
+}
+
+if (localStorage.getItem("notepad") == null) {
+    localStorage.setItem("notepad", JSON.stringify([['this is an inspirational quote','trenchcoat'],['i wonder what I can put here?','800cows'],['i like eggs','sirdoug'],['beep bop','roboto']]));
+}
 updateOptions();
 updateUser();
+updateNotepad();

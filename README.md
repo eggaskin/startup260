@@ -63,16 +63,17 @@ I animated the category list items when hovered over.
 - **Application images** - I have an image "logo" in the header navigation bar that resizes with the window. I also have delete icon images for the item deletion in the categories page.
 
 
-## FROM HERE ON IS UNFINISHED
 ## JavaScript deliverable
 
-For this deliverable I made my application functional to track and display a user's three votes.
-TEMPLATE
-- **login** - When you press enter or the login button it takes you to the voting page.
-- **database** - Displayed the voting counts. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
-- **WebSocket** - I used the setInterval function to periodically increase a random vote count. This will be replaced with WebSocket messages later.
-- **application logic** - The highlight and ranking number change based up the user's selections.
+- **login** - The user can enter a username on the login page which is then displayed on every page on the top navigation bar. It is saved in localStorage so it persists between sessions.
+- **database** - Notes are added to database, which is for now a JSON stored in localStorage. The DOM is updated to reflect changes to this database of categories and notes in the category options and category notes display.
+- **WebSocket** - Global Notepad has 4 fake notes and the interface for submitting notes to the global 'message board'. This will be replaced and the data will be gotten from the WebSocket later. 
 
+You can add notes to it and your own username will be displayed but there is currently no data from other users. (it is currently all in localStorage)
+- **application logic** - You can change the styling of categories which changes their display color. You can add and delete notes from categories, and add and delete categories themselves.
+
+
+## FROM HERE ON IS UNFINISHED
 ## Service deliverable
 
 For this deliverable I created an HTTP service to host my frontend and provide backend endpoints.
