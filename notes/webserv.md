@@ -15,7 +15,7 @@
 *  #3 - anchor
 
 ### HTTP requests
-* method:
+* method: (verbs)
   * GET existing resource
   * POST new resource
   * PUT update resource
@@ -51,6 +51,73 @@
   * expires, secure, HttpOnly (no javascript), SameSite=Strict
 * cache control (browser has a cache, cache servers, origin server)
     * max-age=0, no-cache, no-store, must-revalidate, public, private, proxy-revalidate
+
+* _security_.. avoid forging website data!
+  * attacker website with mispelled domain
+  * mimics source website
+  * fetch to actual website so they do login, but steals credentials
+  * AVOID by using same origin policy (*SOP*) - can't fetch to different domain
+  * *CORS* - cross origin resource sharing
+    * server can allow other domains to fetch from it
+    * server sends Access-Control-Allow-Origin header (with allowed origin domains)
+    * browser checks if domain is allowed to fetch
+    * if allowed, browser sends request
+    * if not, browser throws error
+
+## steps to service
+node.js -> express -> middleware
+
+>
+> *nvm* - node version manager, Node - js runtime, *npm* - node package manager
+> long term support node preferred
+> *npm* install ___ to install packages
+> in js file, 'const package = require(package-name)' then 'package.function()' to use package
+>
+> 'http' package is built in, but use 'express' instead
+> > 'http' use: createServer with callback function (req, res) that runs on response, listen to port
+> > 'express' use: 'app = express()', express, app, req, res, router
+> > > 'app.use(path(maybe),callback)' to use middleware (in order)
+> > > 'app.get(path, callback)' to use callback function on path
+> > > 'app.listen(port)' to listen to port
+> > Routers: 'router = express.Router()', 'router.get(path, callback)', 'app.use(path, router)'
+> > you could have multiple routers for different paths, a secure vs. not, etc.
+> > 'app.use(express.static(path))' to serve static files
+> > 'err' parameter for callback functions to handle errors
+> > res.send() to send response, sendFile, redirect, status
+>  PM2 (process manager) - daemons
+>  * 'pm2 start index.js -n name -- port' to start app, 'pm2 save'
+>  
+
+use 'npm init -y' to create json files for service, then 'npm install express' to install express. make sure to add node_modules folder to .gitignore for clean repo.
+
+* express is a framework for node.js
+* middleware is a function that takes a request and response and does something with it
+ * takes (req, res, next) as parameters
+  * next() calls the next middleware
+  * res.send() sends a response
+* test using fn-5 to debug, and connec to localhost:port to test in browser.
+* restart server when changes are made, or use nodemon to auto-restart.
+* look at network tab in dev tools to see requests and responses
+
+### endpoints
+functions for your service, api (application program interface)
+* readable!! ex. 'store/provo/order/2
+* simple
+* documented
+
+### formats/endpoint models
+remote procedure call - RPC
+* function called/ran on another computer
+* POST request with function name and parameters
+* response with result
+
+REST - representational state transfer
+* use all HTTP methods/verbs as much as possible
+* url is a noun, ex. '/order/2'
+
+GraphQL
+* query for everything you want
+
 
 ## UX
 sitemap - how user expects to navigate site, not what is easiest to code!!
