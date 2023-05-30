@@ -4,6 +4,7 @@
 - [HTML](./notes/html.md)
 - [CSS](./notes/css.md)
 - [JavaScript](./notes/js.md)
+- [UX, HTTP](./notes/webserv.md)
 
 
 ## KEY INFO
@@ -28,6 +29,8 @@ http://34.196.7.147/ (elastic)
 ### deployment
 * push/pull from dev environ (console, vscode here) to git (https://local)
 * deploy to production environ (https://domain)
+
+'chmod +x deploy.sh' to make executables
 
 './deployService.sh -k ~/(KEY) -h (ROOT DOMAIN) -s (simon/startup)'
 

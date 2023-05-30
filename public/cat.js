@@ -81,11 +81,11 @@ function deleteNote() {
 
 function getStyle() {
     const color = document.querySelector("#color").value;
-    const format = document.querySelector("input[name=\"format\"]:checked").value;
-    doStyle(color,format);
+    // const format = document.querySelector("input[name=\"format\"]:checked").value;
+    doStyle(color);
 }
 
-function doStyle(color,format) {
+function doStyle(color) {
     // change background color of cat items
     // change format of cat items
     const divEls = document.querySelectorAll(".list > div");
@@ -95,15 +95,9 @@ function doStyle(color,format) {
     for (const [i, div] of divEls.entries()) {
         div.style.backgroundColor = color;
         div.style.borderColor = newShade(color,-0.35);
-        if (format == "check") {
-            //TODO: add checkbox
-            //div.innerHTML = "<div>"+div.innerHTML+"</div><div id=\"delbutton\"><button onclick=\"deleteNote.call(this)\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
-        } else {
-            //div.innerHTML = "<div>"+div.innerHTML+"</div><div id=\"delbutton\"><button onclick=\"deleteNote.call(this)\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
-        }
     }
     let [categories,cat,catname] = getCurrentCat();
-    cat.style = format;
+    // cat.style = format;
     cat.color = color;
     categories[catname] = cat;
     localStorage.setItem("categories", JSON.stringify(categories));

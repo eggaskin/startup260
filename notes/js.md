@@ -7,23 +7,6 @@
 
 * 'let' lets vars change, 'const' does not
 
-# TODO
-*  javascript for delete buttons
-* new category buttons
-* add notes to categories
-* delete notes
-* global datastructure
-* login buttons
-
-use array of strings for notes
-use array of objects for categories
-use array of objects for users
-
-displaying notes, adding div's to page??
-styling settings for each category - tuple of color hex and check/item
-ADD CHECKBOX FUNCTIONALITY
-newitem/additem in flexbox so they shrink to fit
-
 ## Objects/Classes
 '''javascript
 const obj = new Object();
@@ -71,6 +54,7 @@ class Person {
 
 ## Doodads
 * make reg expressions using 'RegExp('pattern','flags')' or '/pattern/flags'
+  * 'i' is case insensitive
   * use 'test' method to check if a string matches a pattern
   * match method returns an array of matches
   * replace method replaces matches with a string
@@ -109,7 +93,7 @@ This is how you interact with and edit the HTML!
 * removeChild(element) to remove an element from another
 * innerHTML to get/set the HTML inside an element (risk of attack)
 
-### Event Listeners
+## Event Listeners
 * addEventListener('event',function) to add a function to an event
   * events include click, focus, key presses, text selection
 * to add in HTML: 
@@ -118,7 +102,7 @@ This is how you interact with and edit the HTML!
 '''
 * *USE FUNCTION OBJECT* not the actual call. ex. function not function()
 
-### Modules
+## Modules
 * use 'export' keyword to export a function or variable ex. 'export function() {}'
 * use 'import' keyword to import a function or variable ex. 'import {function} from './file.js'
 
@@ -134,6 +118,29 @@ greet.hello();
 
 * 'window.funcName = importedFunc' lets function be called in global scope
 
-### Async
+## Async
 * JS is single threaded
 * everything must be asynchronous!! can't run forever.
+* use 'setTimeout(function,time)' to run a function after a certain time
+* use 'setInterval(function,time)' to run a function every certain time
+* functions that use await must be async
+* use 'await' keyword to wait for a promise to resolve
+  * instead of then/catch/finally, use try catch blocks. (try {await} catch {error} finally {cleanup}) easier to have multiple 'await's
+* 'async' function generates a promise no matter what
+* await an async function to get just the return value
+  * use await from top level function OR async function
+
+
+### Promises
+* use 'new Promise((resolve,reject) => {})' to create a promise
+* Promise gets called back when function is done
+* use 'resolve()' and 'reject()' to return values
+* pending (async), fulfilled, or rejected states
+* use 'then()' to handle a fulfilled promise. (or use then(success, failure) , suc/fail functions to handle res/rej cases)
+  * could just be one function to handle both cases, etc, or just hand off failure case to catch phase
+* use 'catch' to handle a rejected promise
+* use 'finally' to handle a promise regardless of state
+  * ex. 'promise.then().catch().finally()'
+
+
+

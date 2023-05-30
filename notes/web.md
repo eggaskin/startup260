@@ -23,7 +23,7 @@ Brandon Eich -> JavaScript, interaction
 >  
 > To map domain to IP, use:
 > * A (address): maps domain -> IP
-> * CNAME (canonical name): maps domain -> domain. aliasing!
+> * CNAME (canonical name): maps domain -> domain. aliasing! another DNS record
 > 
 > Finding IP addresses: browser cache -> DNS server cache -> authoritative name server -> error.
 > 

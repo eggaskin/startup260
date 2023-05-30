@@ -7,6 +7,7 @@ class Category {
     }
 }
 
+
 function getCurrentCat() {
     // const catname = document.querySelector("#title").innerHTML;
     const catname = localStorage.getItem("currentCat");
