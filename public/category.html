@@ -26,7 +26,7 @@
                 <div id="add">
                     <form method="get" action="category.html">
                         <div><input type="text" id="note" placeholder="New Item" /></div>
-                            <div id="additem"><button onclick="addNote(true)">Add Item</button></div>
+                            <div id="additem"><button type="button" onclick="addNote(true)">Add Item</button></div>
                     </form>
                 </div>
               </div>
@@ -39,7 +39,7 @@
                             <!-- <option >grocery list</option> -->
                         </select></div>
                         <!-- <button id="switchcat" onclick="changeCategory()">View Category</button> -->
-                      <button id="switchcat" >View Category</button>
+                      <button type='button' id="switchcat" >View Category</button>
             </form>
           </div>
           <div class="postit" id="styling"><h1>Styling</h1>
@@ -51,7 +51,7 @@
                     <input type="radio" id="checkbox" name="format" value="checkbox"  />
                     <label for="items">items</label>
                     <input type="radio" id="items" name="format" value="items" checked /></div> -->
-                    <button onclick="getStyle()">Style</button><button type="delete" onclick="deleteCategory()">Delete Category</button>
+                    <button type='button' onclick="getStyle()">Style</button><button type="delete" onclick="deleteCategory()">Delete Category</button>
             </form>
           </div>
         </div>

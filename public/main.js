@@ -8,6 +8,44 @@ class Category {
 }
 
 
+async function loadCategories() {
+    try {
+        const response = await fetch('/note/cats');
+        let cats = await response.text();
+        if (cats == "") {
+            cats = `{"grocery list":{"name":"grocery list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}}`;
+        }
+        localStorage.setItem("categories", cats);
+    } catch {
+        if (localStorage.getItem("categories") === null) {
+            localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
+        }
+        console.log("Error loading categories. Using default categories");
+    }
+    updateOptions();
+    return localStorage.getItem("categories");
+}
+
+async function submitCategories() {
+    const categories = localStorage.getItem("categories");
+    try {
+        const response = await fetch('/note/savecat', {
+            method: 'POST',
+            body: categories,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const cats = await response.text();
+        //console.log(cats);
+        //const cats = await response.json();
+        //localStorage.setItem("categories", JSON.stringify(cats));
+    } catch {
+        console.log("Error submitting categories. They are saved locally");
+    }
+}
+
+
 function getCurrentCat() {
     // const catname = document.querySelector("#title").innerHTML;
     const catname = localStorage.getItem("currentCat");
@@ -22,7 +60,7 @@ function addNote(populateCat=false) {
     if (populateCat) {
         const listEl = document.querySelector(".list");
         const noteEl = document.createElement("div");
-        noteEl.innerHTML = "<div>"+note+"</div><div id=\"delbutton\"><button onclick=\"deleteNote.call(this)\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
+        noteEl.innerHTML = "<div>"+note+"</div><div id=\"delbutton\"><button type=\"button\" onclick=\"deleteNote.call(this)\"><img src=\"delete.png\" alt=\"Delete\" width=\"25vw\" height=\"25vw\"></button></div>";
         listEl.appendChild(noteEl);
     }
     // get current category
@@ -36,6 +74,7 @@ function addNote(populateCat=false) {
     localStorage.setItem("categories", JSON.stringify(categories));
     // clear input
     text.value = "";
+    submitCategories();
 }
 
 function addCategory() {
@@ -45,6 +84,7 @@ function addCategory() {
     localStorage.setItem("categories", JSON.stringify(categories));
     updateOptions();
     document.querySelector("#newCategory").value = "";
+    submitCategories();
 }
 
 function updateOptions() {
@@ -95,18 +135,18 @@ function addNotepad() {
     const notepad = JSON.parse(localStorage.getItem("notepad"));
     notepad.push([newNote,getUser()]);
     localStorage.setItem("notepad", JSON.stringify(notepad));
+    // clear text value
+    document.querySelector("#notepadnew").value = "";
 }
 
 if (localStorage.getItem("notepad") == null) {
     localStorage.setItem("notepad", JSON.stringify([['this is an inspirational quote','trenchcoat'],['i wonder what I can put here?','800cows'],['i like eggs','sirdoug'],['beep bop','roboto']]));
 }
-if (localStorage.getItem("categories") == null) {
-    localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
-}
 if (localStorage.getItem("currentCat") == null) {
     localStorage.setItem("currentCat", "grocery list");
 }
-updateOptions();
+loadCategories();
+// updateOptions();
 updateUser();
 updateNotepad();
 

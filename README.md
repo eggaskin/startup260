@@ -66,18 +66,16 @@ For this deliverable I added the application structure.
 - **WebSocket** - Global Notepad has 4 fake notes and the interface for submitting notes to the global 'message board'. This will be replaced and the data will be gotten from the WebSocket later. These update with mock random messages from other users every few seconds.
 - **application logic** - You can change the styling of categories which changes their display color. You can add and delete notes from categories, and add and delete categories themselves.
 
-
-## FROM HERE ON IS UNFINISHED
 ## Service deliverable
 
-For this deliverable I created an HTTP service to host my frontend and provide backend endpoints.
-TEMPLATE
-- **Node.js/Express HTTP service** - done!
-- **Static middleware for frontend** - done!
-- **Calls to third party endpoints** - I didn't have time to implement this. 😔
-- **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for voting.
-- **Frontend calls service endpoints** - I did this use the fetch function.
+- **Node.js/Express HTTP service** - Done.
+- **Static middleware for frontend** - Done.
+- **Calls to third party endpoints** - Each time the category page is changed or reloaded, it displays a random sample color to re-style the category background. This is derived from a random hexcode from https://www.colr.org/json/color/random.
+- **Backend service endpoints** - Endpoints for retrieving categories and updating categories.
+- **Frontend calls service endpoints** - Frontend fetches categories and also 'puts' categories to update them on the backend.
 
+
+## FROM HERE ON IS UNFINISHED
 ## DB deliverable
 
 For this deliverable I stored and retrieved data from MongoDB.
