@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-let cats = {};
+let cats = ``;
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -14,16 +14,17 @@ app.use(express.static('public'));
 
 // Router for service endpoints
 const apiRouter = express.Router();
-app.use(`/api`, apiRouter);
+app.use(`/note`, apiRouter);
 
-// GetCategories TODO:
+// GetCategories
 apiRouter.get('/cats', (_req, res) => {
   res.send(cats);
 });
 
-// SubmitCategory TODO:
-apiRouter.post('/cat', (req, res) => {
-  scores = updateCategories(req.body, cats);
+// SubmitCategory 
+apiRouter.post('/savecat', (req, res) => {
+  cats = JSON.stringify(req.body);
+  console.log(cats);
   res.send(cats);
 });
 
@@ -36,8 +37,8 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-function updateCategories(newCats, cats) {
-    cats = newCats;
-    return cats;
-}
+// function updateCategories(newCats) {
+//     cats = newCats;
+//     return cats;
+// }
 
