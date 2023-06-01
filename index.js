@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
-
-let cats = ``;
+const db = require('./database.js');
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -18,14 +17,30 @@ app.use(`/note`, apiRouter);
 
 // GetCategories
 apiRouter.get('/cats', (_req, res) => {
+  // res.send(cats);
+  const cats = await db.getCategories();
   res.send(cats);
 });
 
-// SubmitCategory 
+// GetCategory
+apiRouter.get('/cat/:catname', (req, res) => {
+  const catname = req.params.catname;
+  const cat = await db.getCategory(catname);
+  res.send(cat);
+});
+
+// submit categories
 apiRouter.post('/savecat', (req, res) => {
   cats = JSON.stringify(req.body);
-  console.log(cats);
+  // console.log(cats);
   res.send(cats);
+});
+
+// submit category
+apiRouter.post('/savecat/:catname', (req, res) => {
+  const catname = req.params.catname;
+  db.addCategory(catname);
+  // TODO: res.send(catname);
 });
 
 // Return the application's default page if the path is unknown
@@ -36,9 +51,3 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// function updateCategories(newCats) {
-//     cats = newCats;
-//     return cats;
-// }
-

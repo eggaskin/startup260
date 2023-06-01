@@ -3,11 +3,11 @@
 
 Can set properties for different elements in the HTML. Ex.
 
-'''css
+```css
 (element, * for all) {
     property: property;
 }
-'''
+```
 
 element titles can be more complex:
 * body section (section elements found in body elements)
@@ -18,17 +18,17 @@ element titles can be more complex:
 ## Selectors
 
 *Class* (class="name")
-'.class' denotes elements in a certain class.
+`.class` denotes elements in a certain class.
 
 *ID* (id="name")
-'#id' denotes elements with a certain id.
+`#id` denotes elements with a certain id.
 
 To select elements with a specific *attribute*:
-'element[attribute="attr val"]'
+`element[attribute="attr val"]`
 
-"Pseudo" selector look like 'section:hover' and happen when a specific action happens.
+"Pseudo" selector look like `section:hover` and happen when a specific action happens.
 
-Style using 'style="attributes:attribute"'.
+Style using `style="attributes:attribute"`.
 
 ## Declarations
 Change the properties of an element. So many. Use [this reference](https://learn.cs260.click/page/css/declarations/declarations_md).
@@ -41,22 +41,22 @@ vh for view height, em for m-letter size, px for pixels.
 Font families are groups of fonts: serif, sans-serif, fixed, symbol (non-text).
 
 To get other fonts, import from a site or from [google](https://fonts.google.com/):
-'''css
-@import url('https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap');
+```css
+@import url(`https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap`);
 
 OR
 
 @font-face {
-  font-family: 'Quicksand';
-  src: url('https://cs260.click/fonts/quicksand.woff2');
+  font-family: `Quicksand`;
+  src: url(`https://cs260.click/fonts/quicksand.woff2`);
 }
-'''
+```
 
 ## Animation
-First declare the properties 'animation-name' and 'animation-dur'.
+First declare the properties `animation-name` and `animation-dur`.
 Then make your keyframes:
 
-'''css
+```css
 @keyframes demo {
   from {
     font-size: 0vh;
@@ -70,24 +70,24 @@ Then make your keyframes:
     font-size: 20vh;
   }
 }
-'''
+```
 
 ## Display settings
-'display' attribute:
+`display` attribute:
 * none (invisible)
 * block (fills parent)
 * inline (as big as content)
 * flex (children are flexible)
 * grid (children are in grid)
 
-'float' attribute:
-Can position so other elements \'wrap\' around the element. none/right/left
+`float` attribute:
+Can position so other elements \`wrap\` around the element. none/right/left
 
-'@media' selector: can change how content is displayed based on orientation.
-So '@media (orientation: portrait) {}' changes how divs are displayed, or similar.
+`@media` selector: can change how content is displayed based on orientation.
+So `@media (orientation: portrait) {}` changes how divs are displayed, or similar.
 
 ### Grid
-Use to display group of child elements! Ex. div with many div's inside.
+Use to display group of child elements! Ex. div with many div`s inside.
 
 Grid attributes:
 * template columns
@@ -97,9 +97,9 @@ Grid attributes:
 ### Flex
 Areas can move around as screen is resized.
 
-'flex-direction' is how they are displayed. Then format child elements with different directions as needed.
+`flex-direction` is how they are displayed. Then format child elements with different directions as needed.
 
-'flex' set with how much content can grow (0-#, 0 means is static) or a pixel/etc size.
+`flex` set with how much content can grow (0-#, 0 means is static) or a pixel/etc size.
 
 Properties can be overridden in lower levels, lowest level being the HTML itself.
 

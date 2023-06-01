@@ -1,11 +1,11 @@
 # HTML - Hypertext Markup Langauge
 [**notes home**](../notes.md)
 
-Made up of tags: '<tag> text </tag>'
+Made up of tags: `<tag> text </tag>`
 
 ## Structure
-- 'html' tags enclose all code
-- 'head' with 
+- `html` tags enclose all code
+- `head` with 
   - meta element
   - title element
 - body
@@ -24,9 +24,9 @@ Made up of tags: '<tag> text </tag>'
 
 ### Attributes
 Tags can have attributes in them, ex: 
-'''html
+```html
 <p id="hello" class="greeting">Hello world</p>
-'''
+```
 
 * id distinguishes elements
 * class is a named group of elements
@@ -34,32 +34,32 @@ Tags can have attributes in them, ex:
 
 
 ### Tables
-'table' with 'tr' for rows, 'th' for headers, 'td' for data.
+`table` with `tr` for rows, `th` for headers, `td` for data.
 
 ### Lists
-'ol' or 'ul' (ordered or unordered), 'li' for list items.
+`ol` or `ul` (ordered or unordered), `li` for list items.
 
 ### Comments
-'<!-- comment -->'
+`<!-- comment -->`
 
 ## Links and Media
 
-'<a href="link"> text </a>' anchor tag
+`<a href="link"> text </a>` anchor tag
 
-'<img alt="alternate text" src="image source" width=size />' image
+`<img alt="alternate text" src="image source" width=size />` image
 
-'<audio controls autoplay loop src="audio source"> </audio>' audio clip
+`<audio controls autoplay loop src="audio source"> </audio>` audio clip
 
-'<video controls autoplay loop crossorigin="anonymous"> <source src="video source" /> </video>' video clip
+`<video controls autoplay loop crossorigin="anonymous"> <source src="video source" /> </video>` video clip
 > crossorigin is if you request files from a different domain
 
 > source can be a link to a file, or a path to a file
-> 'width' tag can be used to resize elements
+> `width` tag can be used to resize elements
 
 ## Creating Media
 
 ### SVG
-'<svg PARAMS> ELEMENTS </svg>'
+`<svg PARAMS> ELEMENTS </svg>`
 
 * viewBox (4 numbers for sizing)
 * xmlns ("http://www.w3.org/2000/svg")
@@ -73,8 +73,8 @@ Tags can have attributes in them, ex:
 * etc
 
 ### CANVAS
-'<canvas PARAMS></canvas>
-<script> CODE </script>'
+`<canvas PARAMS></canvas>
+<script> CODE </script>`
 
 * const ctx = INITIALIZE
 * from then on, use ctx.FUNCTION to draw.
@@ -88,7 +88,7 @@ Tags can have attributes in them, ex:
 
 ## Input
 We can make forms!! :tada:
-'form' tag with elements:
+`form` tag with elements:
 
 - date
 - text

@@ -56,7 +56,7 @@
   * attacker website with mispelled domain
   * mimics source website
   * fetch to actual website so they do login, but steals credentials
-  * AVOID by using same origin policy (*SOP*) - can't fetch to different domain
+  * AVOID by using same origin policy (*SOP*) - can`t fetch to different domain
   * *CORS* - cross origin resource sharing
     * server can allow other domains to fetch from it
     * server sends Access-Control-Allow-Origin header (with allowed origin domains)
