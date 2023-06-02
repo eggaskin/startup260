@@ -75,15 +75,13 @@ For this deliverable I added the application structure.
 - **Frontend calls service endpoints** - Frontend fetches categories and also 'puts' categories to update them on the backend.
 
 
-## FROM HERE ON IS UNFINISHED
 ## DB deliverable
 
-For this deliverable I stored and retrieved data from MongoDB.
-TEMPLATE
-- **MongoDB Atlas database created** - done!
-- **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
-- **Stores data in MongoDB** - done!
+- **MongoDB Atlas database created** - Done! 
+- **Endpoints for data** - My get and submit categories endpoints now communicate with MongoDB, and I have extra endpoints for updating and adding singular categories which will be used later.
+- **Stores data in MongoDB** - I store categories and notes in my categories database. I will also store user data to diffrentiate users' notes collections.
 
+## FROM HERE ON IS UNFINISHED
 ## Login deliverable
 
 For this deliverable I added user registration and authentication.

@@ -236,5 +236,5 @@ const switchCat = document.querySelector("#switchcat");
 switchCat.addEventListener("click", ()=>changeCategory());
 updateUser();
 
-module.exports = { loadCategories, submitCategories, getCurrentCat }; 
+//module.exports = { loadCategories, submitCategories, getCurrentCat }; 
 
