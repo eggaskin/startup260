@@ -1,3 +1,4 @@
+const serv = require('./cat.js');
 class Category {
     constructor(name, color, style, notes) {
         this.name = name;
@@ -7,51 +8,51 @@ class Category {
     }
 }
 
-
 async function loadCategories() {
-    try {
-        const response = await fetch('/note/cats');
-        let cats = await response.text();
-        if (cats == "") {
-            cats = `{"grocery list":{"name":"grocery list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}}`;
-        }
-        localStorage.setItem("categories", cats);
-    } catch {
-        if (localStorage.getItem("categories") === null) {
-            localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
-        }
-        console.log("Error loading categories. Using default categories");
-    }
-    updateOptions();
-    return localStorage.getItem("categories");
+    return serv.loadCategories();
+    // try {
+    //     const response = await fetch('/note/cats');
+    //     let cats = await response.json();
+    //     delete cats["_id"];
+    //     if (cats == "") {
+    //         cats = {"grocery list":{"name":"grocery list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
+    //     }
+    //     localStorage.setItem("categories", JSON.stringify(cats));
+    // } catch {
+    //     if (localStorage.getItem("categories") === null) {
+    //         localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
+    //     }
+    //     console.log("Error loading categories. Using default categories");
+    // }
+    // updateOptions();
+    // return localStorage.getItem("categories");
 }
 
 async function submitCategories() {
-    const categories = localStorage.getItem("categories");
-    try {
-        const response = await fetch('/note/savecat', {
-            method: 'POST',
-            body: categories,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const cats = await response.text();
-        //console.log(cats);
-        //const cats = await response.json();
-        //localStorage.setItem("categories", JSON.stringify(cats));
-    } catch {
-        console.log("Error submitting categories. They are saved locally");
-    }
+    // const categories = localStorage.getItem("categories"); //stringified JSON
+    // try {
+    //     const response = await fetch('/note/savecats', {
+    //         method: 'POST',
+    //         body: categories,
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     const cats = await response.json();
+    //     //console.log(cats);
+    // } catch {
+    //     console.log("Error submitting categories. They are saved locally");
+    // }
+    serv.submitCategories();
 }
 
 
-function getCurrentCat() {
-    // const catname = document.querySelector("#title").innerHTML;
-    const catname = localStorage.getItem("currentCat");
-    let categories = JSON.parse(localStorage.getItem("categories"));
-    return [categories, categories[catname], catname];
-}
+// function getCurrentCat() {
+//     // const catname = document.querySelector("#title").innerHTML;
+//     const catname = localStorage.getItem("currentCat");
+//     let categories = JSON.parse(localStorage.getItem("categories"));
+//     return [categories, categories[catname], catname];
+// }
 
 function addNote(populateCat=false) {
     let text = document.querySelector("#note");
@@ -146,7 +147,6 @@ if (localStorage.getItem("currentCat") == null) {
     localStorage.setItem("currentCat", "grocery list");
 }
 loadCategories();
-// updateOptions();
 updateUser();
 updateNotepad();
 

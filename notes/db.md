@@ -36,3 +36,25 @@ Can include options in find, such as `limit: 10` to limit to 10 results, or `sor
 
 ## AUTH and login
 
+* store passwords hashed
+* hash entered password and compare with stored hash
+* use *bcrypt*
+* salt: random string added to password before hashing, OR before hashed pass
+* *bcrypt.hash(password, saltRounds)* to hash password
+* *bcrypt.compare(password, hash)* to compare password to hash
+
+* make new endpoints to authenticate, pass user/pwd (https protects data)
+* return token that is unique to that user, can put as cookie
+those cookies always get sent back
+
+* `cookie-parser` middleware to parse cookies
+* make const for token/cookie title
+* `res.cookie(title, token,settings)` to set cookie
+  * settings: secure, httpOnly, sameSite (strict)
+* `req?.cookies.title` to get cookie
+* `res.clearCookie(title)` to clear cookie
+
+* uuid can be used to make unique ids for users
+
+
+IS THIS HOW TO DO DIFF USER DATA?

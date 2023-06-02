@@ -4,7 +4,8 @@ const { MongoClient } = require('mongodb');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 const db = client.db('NOTED');
-const categories = db.collection('cats');
+const users = db.collection('users');
+const categories = db.collection('catsex');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -15,10 +16,20 @@ const categories = db.collection('cats');
   process.exit(1);
 });
 
+// make this different for each user???
+
 // TODO: Add functions to interact with the database here
 // MOVE LOGIC HERE
 async function addCategory(category) {
   const result = await categories.insertOne(category);
+  return result;
+}
+
+// substitute categories (ALL)
+async function subCategories(catss) { 
+  // const result = await categories.insertMany(categories);
+  // HOW TO COMPELTELY REPLACE THE COLLECTION
+  const result = await categories.replaceOne({}, catss);
   return result;
 }
 
@@ -32,15 +43,15 @@ async function updateCategory(catname, category) {
 function getCategory(catname) {
   const query = { catname: catname };
   const options = { sort: { catname: 1 } };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = categories.find(query, options);
   return cursor.toArray();
 }
 
 function getCategories() {
   const query = {};
   const options = { sort: { catname: 1 } };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = categories.find(query, options);
   return cursor.toArray();
 }
 
-module.exports = { addCategory, getCategory }; //TODO:
+module.exports = { addCategory, getCategory, getCategories, updateCategory, subCategories }; //TODO:

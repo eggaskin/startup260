@@ -6,48 +6,39 @@ class Category {
         this.style = style;
         this.notes = notes;
     }
-
-    // style(color,style) {
-    //     this.color = color;
-    //     this.style = style;
-    //     // update local storage
-    //     const categories = JSON.parse(localStorage.getItem("categories"));
-    //     categories[this.name] = this;
-    //     localStorage.setItem("categories", JSON.stringify(categories));
-    // }
 }
 
 async function loadCategories() {
     try {
         const response = await fetch('/note/cats');
-        let cats = await response.text();
+        let cats = await response.json();
+        delete cats["_id"];
         if (cats == "") {
-            cats = `{"grocery list":{"name":"grocery list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}}`;
+            cats = {"grocery list":{"name":"grocery list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
         }
-        localStorage.setItem("categories", cats);
+        localStorage.setItem("categories", JSON.stringify(cats));
     } catch {
         if (localStorage.getItem("categories") === null) {
             localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
         }
+        console.log("Error loading categories. Using default categories");
     }
     updateOptions();
     return localStorage.getItem("categories");
 }
 
 async function submitCategories() {
-    const categories = localStorage.getItem("categories");
+    const categories = localStorage.getItem("categories"); //stringified JSON
     try {
-        const response = await fetch('/note/savecat', {
+        const response = await fetch('/note/savecats', {
             method: 'POST',
             body: categories,
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-        const cats = await response.text();
-        // console.log(cats);
-        //const cats = await response.json();
-        //localStorage.setItem("categories", JSON.stringify(cats));
+        const cats = await response.json();
+        //console.log(cats);
     } catch {
         console.log("Error submitting categories. They are saved locally");
     }
@@ -237,8 +228,6 @@ function updateUser() {
     } 
     userEl.innerHTML = localStorage.getItem("userName");
 }
-
-
 if (localStorage.getItem("currentCat") == null) {
     localStorage.setItem("currentCat", "grocery list");
 }
@@ -246,3 +235,6 @@ loadCategories();
 const switchCat = document.querySelector("#switchcat");
 switchCat.addEventListener("click", ()=>changeCategory());
 updateUser();
+
+module.exports = { loadCategories, submitCategories, getCurrentCat }; 
+

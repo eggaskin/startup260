@@ -16,31 +16,46 @@ const apiRouter = express.Router();
 app.use(`/note`, apiRouter);
 
 // GetCategories
-apiRouter.get('/cats', (_req, res) => {
+apiRouter.get('/cats', async (_req, res) => {
   // res.send(cats);
   const cats = await db.getCategories();
-  res.send(cats);
+  // console.log(cats);
+  console.log(cats[0]);
+  res.send(cats[0]);
 });
 
 // GetCategory
-apiRouter.get('/cat/:catname', (req, res) => {
+apiRouter.get('/cat/:catname', async (req, res) => {
   const catname = req.params.catname;
   const cat = await db.getCategory(catname);
   res.send(cat);
 });
 
 // submit categories
-apiRouter.post('/savecat', (req, res) => {
-  cats = JSON.stringify(req.body);
-  // console.log(cats);
-  res.send(cats);
+apiRouter.post('/savecats', async (req, res) => {
+  //cats = JSON.stringify(req.body);
+  db.subCategories(req.body);
+  const cats = await db.getCategories();
+  console.log(cats[0]);
+  res.send(cats[0]);
 });
 
 // submit category
-apiRouter.post('/savecat/:catname', (req, res) => {
+apiRouter.post('/savecat/', async (req, res) => {
+  // const catname = req.params.catname;
+  db.addCategory(req.body);
+  const cats = await db.getCategories();
+  console.log(cats[0]);
+  res.send(cats[0]);
+});
+
+// update category
+apiRouter.post('/savecat/:catname', async (req, res) => {
   const catname = req.params.catname;
-  db.addCategory(catname);
-  // TODO: res.send(catname);
+  db.updateCategory(catname, req.body);
+  const cats = await db.getCategories();
+  console.log(cats[0]);
+  res.send(cats[0]);
 });
 
 // Return the application's default page if the path is unknown
