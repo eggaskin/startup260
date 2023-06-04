@@ -15,12 +15,12 @@ async function loadCategories() {
         let cats = await response.json();
         delete cats["_id"];
         if (cats == "") {
-            cats = {"grocery list":{"name":"grocery list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
+            cats = {"list":{"name":"list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
         }
         localStorage.setItem("categories", JSON.stringify(cats));
     } catch {
         if (localStorage.getItem("categories") === null) {
-            localStorage.setItem("categories", JSON.stringify({"grocery list":new Category("grocery list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
+            localStorage.setItem("categories", JSON.stringify({"list":new Category("list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
         }
         console.log("Error loading categories. Using default categories");
     }
@@ -144,7 +144,7 @@ if (localStorage.getItem("notepad") == null) {
     localStorage.setItem("notepad", JSON.stringify([['this is an inspirational quote','trenchcoat'],['i wonder what I can put here?','800cows'],['i like eggs','sirdoug'],['beep bop','roboto']]));
 }
 if (localStorage.getItem("currentCat") == null) {
-    localStorage.setItem("currentCat", "grocery list");
+    localStorage.setItem("currentCat", "list");
 }
 loadCategories();
 updateUser();

@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const db = require('./database.js');
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
+app.use(cookieParser());
 
 // Serve up the frontend static content hosting
 app.use(express.static('public'));
@@ -15,16 +18,61 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use(`/note`, apiRouter);
 
-// GetCategories
-apiRouter.get('/cats', async (_req, res) => {
-  // res.send(cats);
-  const cats = await db.getCategories();
-  // console.log(cats);
-  console.log(cats[0]);
-  res.send(cats[0]);
+// login 
+apiRouter.post('/login', async (req, res) => {
+  const user = await db.getUser(req.body.uname);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
 });
 
-// GetCategory
+// create user
+apiRouter.post('/createuser', async (req, res) => {
+  if (await db.getUser(req.body.uname)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
+    const tok = await db.createUser(req.body.uname, req.body.password);
+    setCookie(res, tok);
+    res.send({
+      token: tok,
+    });
+  }
+});
+
+
+//TODO: fix db stuff
+// apiRouter.get('/me', async (req, res) => {
+//   authToken = req.cookies['token'];
+//   const user = await collection.findOne({ token: authToken });
+//   if (user) {
+//     res.send({ email: user.email });
+//     return;
+//   }
+//   res.status(401).send({ msg: 'Unauthorized' });
+// });
+
+function setCookie(res, tok) {
+  res.cookie('token', tok, {secure:true, httpOnly:true, sameSite:'strict'}); 
+}
+
+// GetCategories
+apiRouter.get('/cats', async (_req, res) => {
+  const authToken = _req.cookies['token'];
+  const cats = await db.getCategories(authToken);
+  delete cats.username;
+  delete cats.token;
+  delete cats.password;
+  delete cats._id;
+  console.log(cats);
+  res.send(cats);
+});
+
+// GetCategory NOT UPDATED
 apiRouter.get('/cat/:catname', async (req, res) => {
   const catname = req.params.catname;
   const cat = await db.getCategory(catname);
@@ -33,14 +81,15 @@ apiRouter.get('/cat/:catname', async (req, res) => {
 
 // submit categories
 apiRouter.post('/savecats', async (req, res) => {
+  const authToken = req.cookies['token'];
   //cats = JSON.stringify(req.body);
-  db.subCategories(req.body);
-  const cats = await db.getCategories();
-  console.log(cats[0]);
-  res.send(cats[0]);
+  db.subCategories(authToken, req.body);
+  const cats = await db.getCategories(authToken);
+  console.log(cats);
+  res.send(cats);
 });
 
-// submit category
+// submit category NOT UPDATED
 apiRouter.post('/savecat/', async (req, res) => {
   // const catname = req.params.catname;
   db.addCategory(req.body);
@@ -49,7 +98,7 @@ apiRouter.post('/savecat/', async (req, res) => {
   res.send(cats[0]);
 });
 
-// update category
+// update category NOT UPDATED
 apiRouter.post('/savecat/:catname', async (req, res) => {
   const catname = req.params.catname;
   db.updateCategory(catname, req.body);
@@ -58,6 +107,9 @@ apiRouter.post('/savecat/:catname', async (req, res) => {
   res.send(cats[0]);
 });
 
+app.use(function (err, req, res, next) { // error handling middleware
+  res.status(500).send({ type: err.name, message: err.message });
+});
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
