@@ -64,6 +64,10 @@ function setCookie(res, tok) {
 apiRouter.get('/cats', async (_req, res) => {
   const authToken = _req.cookies['token'];
   const cats = await db.getCategories(authToken);
+  if (cats == null) {
+    res.status(401).send({ msg: 'Please login!' });
+    return;
+  }
   delete cats.username;
   delete cats.token;
   delete cats.password;
@@ -83,8 +87,16 @@ apiRouter.get('/cat/:catname', async (req, res) => {
 apiRouter.post('/savecats', async (req, res) => {
   const authToken = req.cookies['token'];
   //cats = JSON.stringify(req.body);
-  db.subCategories(authToken, req.body);
+  const result = await db.subCategories(authToken, req.body);
+  if (result == null) {
+    res.status(401).send({ msg: 'Please login to save your work!' });
+    return;
+  }
   const cats = await db.getCategories(authToken);
+  delete cats.username;
+  delete cats.token;
+  delete cats.password;
+  delete cats._id;
   console.log(cats);
   res.send(cats);
 });

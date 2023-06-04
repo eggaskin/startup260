@@ -9,10 +9,19 @@ class Category {
 }
 
 async function loadCategories() {
+    //return serv.loadCategories();
     try {
         const response = await fetch('/note/cats');
-        let cats = await response.json();
-        delete cats["_id"];
+        let cats = {};
+        if (response.ok) {
+            cats = await response.json();
+        } else {
+            const body = await response.json();
+            // display body.msg - popup??
+            alert("Error! "+ body.msg);
+            cats = {"list":{"name":"list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
+        }
+        // delete cats["_id"];
         if (cats == "") {
             cats = {"list":{"name":"list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
         }
@@ -37,11 +46,18 @@ async function submitCategories() {
                 'Content-Type': 'application/json',
             },
         });
-        const cats = await response.json();
+        if (response.ok) {
+            let cats = await response.json();
+        } else {
+            const body = await response.json();
+            // display body.msg - popup??
+            alert("Error! "+ body.msg);
+        }
         //console.log(cats);
     } catch {
         console.log("Error submitting categories. They are saved locally");
     }
+    //serv.submitCategories();
 }
 
 // let cat = new Category("test", "red", "list", ["test1", "test2", "test3"]);

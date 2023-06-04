@@ -45,6 +45,7 @@ async function addCategory(category) {
 async function subCategories(authToken, catss) { 
   // get user's hash and username to save
   const user = await categories.findOne({ token: authToken });
+  if (user==null) return null;
   // TODO: error for no user/categories
   catss.username = user.username;
   catss.token = authToken;

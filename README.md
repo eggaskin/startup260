@@ -81,16 +81,14 @@ For this deliverable I added the application structure.
 - **Endpoints for data** - My get and submit categories endpoints now communicate with MongoDB, and I have extra endpoints for updating and adding singular categories which will be used later.
 - **Stores data in MongoDB** - I store categories and notes in my categories database. I will also store user data to diffrentiate users' notes collections.
 
-## FROM HERE ON IS UNFINISHED
 ## Login deliverable
 
-For this deliverable I added user registration and authentication.
-TEMPLATE
-- **User registration** - Creates a new account in the database.
-- **existing user** - Verifies the user's name and password from data stored in the database
-- **Use MongoDB to store credentials** - done!
-- **Restricts functionality** - You cannot vote until you have logged in.
+- **User registration** - Creates a new user in the database with their own categories/notes, token and hashed password. Existing usernames will be rejected.
+- **existing user** - Verifies the user's name and password from data stored in the database, and if they don't match alerts the user.
+- **Use MongoDB to store credentials** - Done.
+- **Restricts functionality** - You cannot currently add notes without logging in. (Once we add websockets this will be changed so you can still add notes/categories but they will be stored in localStorage and not in the database, but you *cant* add notes to the global notepad which will be implemented using websockets.)
 
+## FROM HERE ON IS UNFINISHED
 ## WebSocket deliverable
 
 For this deliverable I enabled realtime reporting of votes from other users.

@@ -12,8 +12,16 @@ async function loadCategories() {
     //return serv.loadCategories();
     try {
         const response = await fetch('/note/cats');
-        let cats = await response.json();
-        delete cats["_id"];
+        let cats = {};
+        if (response.ok) {
+            cats = await response.json();
+        } else {
+            const body = await response.json();
+            // display body.msg - popup??
+            alert("Error! "+ body.msg);
+            cats = {"list":{"name":"list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
+        }
+        // delete cats["_id"];
         if (cats == "") {
             cats = {"list":{"name":"list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
         }
@@ -22,6 +30,7 @@ async function loadCategories() {
         if (localStorage.getItem("categories") === null) {
             localStorage.setItem("categories", JSON.stringify({"list":new Category("list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
         }
+        console.log(err);
         console.log("Error loading categories. Using default categories");
     }
     updateOptions();
@@ -38,7 +47,13 @@ async function submitCategories() {
                 'Content-Type': 'application/json',
             },
         });
-        const cats = await response.json();
+        if (response.ok) {
+            let cats = await response.json();
+        } else {
+            const body = await response.json();
+            // display body.msg - popup??
+            alert("Error! "+ body.msg);
+        }
         //console.log(cats);
     } catch {
         console.log("Error submitting categories. They are saved locally");
@@ -65,8 +80,13 @@ function addNote(populateCat=false) {
         listEl.appendChild(noteEl);
     }
     // get current category
-    const catname = document.querySelector("#select").value;
+    let catname = document.querySelector("#select").value;
     let categories = JSON.parse(localStorage.getItem("categories"));
+    if (categories[catname]==undefined) {
+        // set catname to first category
+        catname = Object.keys(categories)[0];
+        localStorage.setItem("currentCat", catname);
+    }
     let cat = categories[catname];
     // cat.add(note);
     cat.notes.push(note);
