@@ -1,4 +1,4 @@
-# UX, HTTP
+# UX, HTTP, Web Sockets
 [**notes home**](../notes.md)
 
 ## Web Services
@@ -161,4 +161,16 @@ sitemap - how user expects to navigate site, not what is easiest to code!!
 Walls: registration, payment, login, navigation, legal, cookies
 
 Internationalization: language, currency, times, dates, units, addresses, phone numbers
+
+# WebSockets
+* upgrade for HTTP
+* while HTTP has clients and servers, websockets have peers
+* need to require WebSocket with 'ws' package
+* `WebSocket(address)` to create a websocket
+* use socket.onmessage to assign function called on message
+  * `ws.on('message', function)` to assign function
+  * on: open, connection, message, close
+  * `ws.send(message)` to send message
+* look at websocket-chat example on github - index.js & chatClient.js, peerProxy.js, in slides
+* you need ws upgrade separate from normal endpoints!
 

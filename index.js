@@ -3,6 +3,8 @@ const app = express();
 const db = require('./database.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
+const { peerProxy } = require('./peerProxy.js');
+
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -127,6 +129,8 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-app.listen(port, () => {
+const serv = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(serv);

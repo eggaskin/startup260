@@ -153,11 +153,13 @@ function updateNotepad() {
 
 function addNotepad() {
     const newNote = document.querySelector("#notepadnew").value;
-    const notepad = JSON.parse(localStorage.getItem("notepad"));
-    notepad.push([newNote,getUser()]);
-    localStorage.setItem("notepad", JSON.stringify(notepad));
+    // const notepad = JSON.parse(localStorage.getItem("notepad"));
+    // notepad.push([newNote,getUser()]);
+    // localStorage.setItem("notepad", JSON.stringify(notepad));
     // clear text value
+    addManual(newNote,getUser())
     document.querySelector("#notepadnew").value = "";
+    broadcastNote(getUser(),newNote);
 }
 
 if (localStorage.getItem("notepad") == null) {
@@ -173,14 +175,36 @@ updateNotepad();
 function addManual(note,user) {
     const notepad = JSON.parse(localStorage.getItem("notepad"));
     notepad.push([note,user]);
+    if (notepad.length>5) notepad=notepad.slice(-4);
+    console.log(notepad);
     localStorage.setItem("notepad", JSON.stringify(notepad));
+    updateNotepad();
 }
 
-setInterval(() => {
-    // list of random messages
-    const randmessages = ["this is a random message", "i'm a little teapot", "go cougs", "what wonderful weather", "i need a recipe for cookies","tea?"];
-    const randusers = ["HAL","inigo montoya","justsomeguy", "800cows", "sirdoug", "robot","clyde", "prof"];
-    addManual(randmessages[Math.floor(Math.random() * randmessages.length)],randusers[Math.floor(Math.random() * randusers.length)]);
-    updateNotepad();
-  }, 5000);
-  
+// setInterval(() => {
+//     // list of random messages
+//     const randmessages = ["this is a random message", "i'm a little teapot", "go cougs", "what wonderful weather", "i need a recipe for cookies","tea?"];
+//     const randusers = ["HAL","inigo montoya","justsomeguy", "800cows", "sirdoug", "robot","clyde", "prof"];
+//     addManual(randmessages[Math.floor(Math.random() * randmessages.length)],randusers[Math.floor(Math.random() * randusers.length)]);
+//     updateNotepad();
+//   }, 5000);
+
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+
+function configureWebSocket() {
+    socket.onmessage = async (event) => {
+        const msg = JSON.parse(await event.data.text());
+        addManual(msg.value,msg.from);
+    };
+}
+
+function broadcastNote(from, value) {
+    const event = { 
+        from: from,
+        value: value,
+    };
+    socket.send(JSON.stringify(event));
+}
+
+configureWebSocket();

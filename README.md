@@ -88,16 +88,14 @@ For this deliverable I added the application structure.
 - **Use MongoDB to store credentials** - Done.
 - **Restricts functionality** - You cannot currently add notes without logging in. (Once we add websockets this will be changed so you can still add notes/categories but they will be stored in localStorage and not in the database, but you *cant* add notes to the global notepad which will be implemented using websockets.)
 
-## FROM HERE ON IS UNFINISHED
 ## WebSocket deliverable
 
-For this deliverable I enabled realtime reporting of votes from other users.
-TEMPLATE
-- **Backend listens for WebSocket connection** - done!
-- **Frontend makes WebSocket connection** - done!
-- **Data sent over WebSocket connection** - done!
-- **WebSocket data displayed** - All user votes display in realtime
+- **Backend listens for WebSocket connection** - Done, through peerProxy.js
+- **Frontend makes WebSocket connection** - Done, through main.js
+- **Data sent over WebSocket connection** - Notes and usernames are sent over connection.
+- **WebSocket data displayed** - Global notepad populates with other user's notes in real time. (Have to use different pages with separate localStorage to see this, which should be fine since in real life different users will be on separate computers anyways.)
 
+## FROM HERE ON IS UNFINISHED
 ## React deliverable
 
 For this deliverable I port the application over to React.
