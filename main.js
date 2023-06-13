@@ -173,7 +173,7 @@ updateUser();
 updateNotepad();
 
 function addManual(note,user) {
-    const notepad = JSON.parse(localStorage.getItem("notepad"));
+    let notepad = JSON.parse(localStorage.getItem("notepad"));
     notepad.push([note,user]);
     if (notepad.length>5) notepad=notepad.slice(-4);
     console.log(notepad);

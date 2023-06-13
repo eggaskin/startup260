@@ -117,11 +117,16 @@ main {
 
 }
 
+#notepad button {
+    height:15vh;
+}
+
 #note {
     border: none;
-    padding:20px;
+    padding:10px;
     background-color: rgb(253, 255, 240);
     font-size:large;
+    height:3vh;
 }
 
 .postit {
@@ -179,7 +184,9 @@ main {
     padding: 0.5vw;
     display:flex;
     flex-direction: row;
+    height: 10vh;
 }
+
 
 .list >div:hover {
     animation: shrink 0.3s;
@@ -244,9 +251,9 @@ main {
     background-color: rgb(220, 193, 158);
 }
 
-#maincontain {
+/* #maincontain {
     height: 40vh;
-}
+} */
 
 .notelist {
     flex:1; 
@@ -291,6 +298,7 @@ main {
 
 #userscontent {
     flex: 1;
+    height:40vh;
 }
 
 /* About page text styling */

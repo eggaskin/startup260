@@ -53,3 +53,25 @@ thanks.
 * css still works
 * class -> className so jsx doesn't get confused
 
+## Reactivity
+* by changing properties and components, change the DOM reactively/rerender
+* useState - component states
+* useEffect - side effects, like external fetches, include `[]` to only run once/first render
+  * or `[]` includes variables that when changed, useEffect runs
+
+
+### Hooks
+* only in function components
+* top function scope
+* no loops/conditionals
+
+STEPS
+* service directory for everything else
+* then single other files
+* vite.config.js just LOOK AT SIMON
+* index.jsx renders root
+* app.jsx renders views, header, footer, navlinks (in src with app.css)
+* className instead of class
+* use effects for fetches
+* can make const lists for lists of elements! then {list} in jsx
+
