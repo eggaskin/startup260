@@ -18,7 +18,7 @@ app.use(express.static('public'));
 
 // Router for service endpoints
 const apiRouter = express.Router();
-app.use(`/noted`, apiRouter);
+app.use(`/note`, apiRouter);
 
 // login 
 apiRouter.post('/login', async (req, res) => {

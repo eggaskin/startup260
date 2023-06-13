@@ -46,7 +46,7 @@ export function Global({userName}) {
               <div className="card"> 
                 <form method="get" >
                     <input type="text" id="notepadnew" placeholder="new item" onChange={(e) => setNewNote(e)}/>
-                        <button type="button" onClick={broadcastNote()}>Add Item</button>
+                        <button type="button" onClick={broadcastNote}>Add Item</button>
                 </form> </div>
                 {notes}
             </div>

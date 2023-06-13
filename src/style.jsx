@@ -14,7 +14,7 @@ export function Style({updateCat, delCat}) {
         .then((data) => {
             setColor('#'+data.new_color);
         });
-    },[]); //TODO: are render rules right with this??
+    },[]);
 
     return (<div className="postit" id="styling">
         <h1> Styling: </h1>

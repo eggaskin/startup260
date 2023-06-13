@@ -36,8 +36,8 @@ export function Login({onAuthChange}) {
         <form method="get" action="index.html">
               <input type="text" id="username" onChange={(u)=>setUser(u.target.value)} placeholder="username" />
               <input type="password" id="password" onChange={(u)=>setPassword(u.target.value)} placeholder="*******" />
-          <button type="button" onClick={() => doUser('/noted/login')}>Login</button>
-          <button type="button" onClick={() => doUser('/noted/createuser')}>New</button>
+          <button type="button" onClick={() => doUser('/note/login')}>Login</button>
+          <button type="button" onClick={() => doUser('/note/createuser')}>New</button>
         </form>
         </div>
         <div style={{flex:5}}>

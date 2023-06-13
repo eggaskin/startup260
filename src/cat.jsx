@@ -3,7 +3,7 @@ import "../main.css";
 import {Notes} from "./notes";
 import {CatSelect} from "./catSelect";
 import {Style} from "./style";
-import {submitCategories, Category} from "./categories"
+import {submitCategories, Category, loadCategories} from "./categories"
 
 // credit to https://natclark.com/tutorials/javascript-lighten-darken-hex-color/
 // https://www.sitepoint.com/javascript-generate-lighter-darker-color/
@@ -28,8 +28,9 @@ export function Cat({userName}) {
     const [cat, setCat] = React.useState('list');
     const [color, setColor] = React.useState("#f8f6c4");
 
+    React.useEffect(() => {loadCategories()},[]);
+
     // when the category changes, view category
-    React.useEffect(() => {return;}, [cat]);
 
     function colorCat(color) {
         setColor(color);

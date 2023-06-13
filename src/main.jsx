@@ -3,10 +3,12 @@ import "../main.css";
 import {Notepad} from "./notepad";
 import {CatSelect} from "./catSelect";
 import {Global} from "./global";
-import {submitCategories, Category} from "./categories"
+import {submitCategories, Category, loadCategories} from "./categories"
 
 export function Main({userName}) {
     const [catname, setCat] = React.useState('list');
+
+    React.useEffect(() => {loadCategories()},[]);
     
     function addNote(note) {
         // add note to cat
