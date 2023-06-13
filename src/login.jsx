@@ -20,7 +20,7 @@ export function Login({onAuthChange}) {
         });
         if (response.ok) {
             localStorage.setItem('userName', user);
-            window.location.href = 'index.html';
+            window.location.href = 'main';
             onAuthChange(user, AuthState.Authenticated);
         } else {
             const body = await response.json();
