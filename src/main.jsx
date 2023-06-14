@@ -47,7 +47,7 @@ export function Main({userName}) {
     <main>
         <div className="container" id="notepadcontainer">
             <Notepad cat={catname} addNote={addNote} />
-            <CatSelect newCat={true} clickFunc={changeCat} />
+            <CatSelect username={userName} newCat={true} clickFunc={changeCat} />
         </div>
         <Global userName={userName}/>
     </main>);

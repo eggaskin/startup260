@@ -86,7 +86,7 @@ For this deliverable I added the application structure.
 - **User registration** - Creates a new user in the database with their own categories/notes, token and hashed password. Existing usernames will be rejected.
 - **existing user** - Verifies the user's name and password from data stored in the database, and if they don't match alerts the user.
 - **Use MongoDB to store credentials** - Done.
-- **Restricts functionality** - You cannot currently add notes without logging in. (Once we add websockets this will be changed so you can still add notes/categories but they will be stored in localStorage and not in the database, but you *cant* add notes to the global notepad which will be implemented using websockets.)
+- **Restricts functionality** - You cannot add notes without logging in.
 
 ## WebSocket deliverable
 
@@ -95,12 +95,10 @@ For this deliverable I added the application structure.
 - **Data sent over WebSocket connection** - Notes and usernames are sent over connection.
 - **WebSocket data displayed** - Global notepad populates with other user's notes in real time. (Have to use different pages with separate localStorage to see this, which should be fine since in real life different users will be on separate computers anyways.)
 
-## FROM HERE ON IS UNFINISHED
 ## React deliverable
 
-For this deliverable I port the application over to React.
-TEMPLATE
-- **Bundled and transpiled** - done!
-- **Components** - Login, voting list, vote are all components.
-- **Router** - Routing between login and voting components.
-- **Hooks** - UseState to track changes in vote state.
+- **Bundled** - Done with Vite.
+- **Components** - Category selection 'postits', notepad, global notepad, notes list are all separate components inside their component pages.
+- **Router** - Routing between main page, category page, and login/about page.
+- **Hooks** - Uses effect hook to keep track of updates in username to update categories, and to load categories on first render. Uses states to keep track of notes and categories.
+*Note* I still have the third-party fetch working for the random color on each page load, but am not longer coloring the categories with it (might implement this in the week to come but not right now due to time).

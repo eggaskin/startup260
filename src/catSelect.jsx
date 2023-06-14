@@ -2,13 +2,14 @@ import React from 'react';
 import "../main.css";
 import { loadCategories } from './categories';
 
-export function CatSelect({newCat, clickFunc}) {
+export function CatSelect({userName, newCat, clickFunc}) {
     const [catName, setCat] = React.useState("list");
     const [newCatName, setNewCatName] = React.useState("");
     const buttonName = newCat ? "New" : "View Category";
     // how to populate options??
     // loadCategories().then(() => {console.log("loaded categories")});
 
+    React.useEffect(() => {console.log("welcome user "+userName); setCat(catName)},[userName]);
     // when catname is changed, alert console
     // React.useEffect(() => {console.log("catname changed to "+catName)},[catName]);
 
@@ -28,7 +29,7 @@ export function CatSelect({newCat, clickFunc}) {
         clickFunc(newCatName,true);
     }
 
-    return (<div className="postit" id="catSelect">
+    return (<div className="postit" id="catSelect" key={userName}>
         <h1> Category: </h1>
         <select id="select" name="varSelect" onChange={(e) => {setCat(e.target.value); clickFunc(e.target.value)}}>
             {getOptions()}

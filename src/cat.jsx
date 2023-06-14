@@ -26,8 +26,7 @@ function newShade(hex, lum) {
 
 export function Cat({userName}) {
     const [cat, setCat] = React.useState('list');
-    const [color, setColor] = React.useState(JSON.parse(localStorage.getItem("categories"))[cat].color|"#f8f6c4");
-
+    const [color, setColor] = React.useState(localStorage.getItem("categories")==null ? "#f8f6c4" :JSON.parse(localStorage.getItem("categories"))[cat].color);
 
     // when the category changes, view category
     // React.useEffect(() => {// rerender
@@ -58,7 +57,7 @@ export function Cat({userName}) {
         <div className="container" id="userscontent" style={{flexDirection: 'row'}}>
             <Notes catname={cat} style={{backgroundColor:color,borderColor:newShade(color,-0.35)}} />
             <div className="container" style={{flexDirection:'column'}}>
-            <CatSelect newCat={false} clickFunc={(e) => setCat(e)} />
+            <CatSelect userName={userName} newCat={false} clickFunc={(e) => setCat(e)} />
             <Style updateCat={colorCat} delCat={delCat}/>
             </div>
         </div> 

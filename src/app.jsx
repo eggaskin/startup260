@@ -12,7 +12,7 @@ function App() {
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
-  loadCategories().then(() => {console.log("loaded categories")});
+  loadCategories().then(() => {console.log("loaded categories for user "+userName)});
 
   const user = authState === AuthState.Authenticated ? userName : 'Anon';
   return (
