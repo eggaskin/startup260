@@ -5,11 +5,14 @@ import { Cat } from './cat';
 import { Main } from './main';
 import { AuthState } from './authState';
 import '../main.css';
+import { loadCategories } from './categories';
 
 function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
+
+  loadCategories().then(() => {console.log("loaded categories")});
 
   const user = authState === AuthState.Authenticated ? userName : 'Anon';
   return (

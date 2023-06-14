@@ -3,9 +3,15 @@ import "../main.css";
 import {submitCategories} from "./categories";
 
 export function Notes({catname}) {
-    const [cat, setCat] = React.useState(catname);
-    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("categories"))[cat].notes);
+    // const [cat, setCat] = React.useState(catname);
+    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("categories"))[catname].notes);
     const [newnote, setNewNote] = React.useState("");
+
+    // React.useEffect(() => {
+    //     setCat(catname);
+    //     setNotes(JSON.parse(localStorage.getItem("categories"))[catname].notes);
+    //     console.log("notes changed to "+catname);
+    // },[catname]);
 
     function addNote() {
         let nootes = notes;
@@ -14,19 +20,19 @@ export function Notes({catname}) {
         setNewNote("");
 
         let categories = JSON.parse(localStorage.getItem("categories"));
-        categories[cat].notes.push(newnote);
+        // console.log("adding note to "+catname);
+        categories[catname].notes.push(newnote);
         localStorage.setItem("categories", JSON.stringify(categories));
         submitCategories();
-        console.log("adding note");
     }
 
     function removeNote(note) {
-        let nootes = notes;
+        let nootes = JSON.parse(localStorage.getItem("categories"))[catname].notes;
         nootes = nootes.filter((el) => el != note);
         setNotes(nootes);
 
         let categories = JSON.parse(localStorage.getItem("categories"));
-        categories[cat].note = nootes;
+        categories[catname].notes = nootes;
         localStorage.setItem("categories", JSON.stringify(categories));
         submitCategories();
     }
@@ -34,19 +40,27 @@ export function Notes({catname}) {
     //TODO: how to style all notes?
 
     function getNotes() {
+        // setCat(catname);
+        // setNotes(JSON.parse(localStorage.getItem("categories"))[catname].notes);
+        // console.log("notes updated to "+catname)
+        let nnotes = JSON.parse(localStorage.getItem("categories"))[catname].notes;
         const noteEls = [];
-        for (let i = 0; i < notes.length; i++) {
-            noteEls.push(<div key={i}><div className="note">{notes[i]}</div>
+        for (let i = 0; i < nnotes.length; i++) {
+            noteEls.push(<div key={i}><div className="note">{nnotes[i]}</div>
             <div id="delbutton">
-                <button type="button" onClick={()=>{removeNote(notes[i])}}>
+                <button type="button" onClick={()=>{removeNote(nnotes[i])}}>
                     <img src="delete.png" alt="Delete" width="25vw" height="25vw" />
                         </button></div></div>);
         }
         return noteEls;
     }
 
+    function getCat() {
+        return catname;
+    }
+
     return (<section className="notelist" >
-        <div id="title"> {cat} </div>
+        <div id="title"> {getCat()} </div>
         <div className="list">
             {getNotes()}
             <div id="add">

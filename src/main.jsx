@@ -29,7 +29,7 @@ export function Main({userName}) {
         return;
     }
 
-    function changeCat(name,newcat=False) {
+    function changeCat(name,newcat=false) {
         if (newcat) {
             // add new category
             const categories = JSON.parse(localStorage.getItem("categories"));
@@ -49,6 +49,6 @@ export function Main({userName}) {
             <Notepad cat={catname} addNote={addNote} />
             <CatSelect newCat={true} clickFunc={changeCat} />
         </div>
-        {/* <Global userName={userName}/> */}
+        <Global userName={userName}/>
     </main>);
 }

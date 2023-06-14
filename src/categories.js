@@ -25,14 +25,13 @@ async function loadCategories() {
             cats = {"list":{"name":"list","color":"#f8f6c4","style":"check","notes":["apples","eggs","pesto","licorice"]}};
         }
         localStorage.setItem("categories", JSON.stringify(cats));
-    } catch {
+    } catch(err) {
         if (localStorage.getItem("categories") === null) {
             localStorage.setItem("categories", JSON.stringify({"list":new Category("list", "#f8f6c4", "check", ["apples", "eggs", "pesto", "licorice"])}));
         }
         console.log(err);
         console.log("Error loading categories. Using default categories");
     }
-    updateOptions();
     return localStorage.getItem("categories");
 }
 

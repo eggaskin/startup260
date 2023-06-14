@@ -1,10 +1,10 @@
 import React from 'react';
 import '../main.css';
-
+import { AuthState } from './authState';
 // import { Unauthenticated } from './Unauthenticated';
 // import { Authenticated } from './authenticated';
-// import { AuthState } from './authState';
 // { userName, authState, onAuthChange }
+
 export function Login({onAuthChange}) {
     const [user, setUser] = React.useState('');
     const [password, setPassword] = React.useState('');

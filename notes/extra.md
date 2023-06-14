@@ -1,6 +1,5 @@
 # Extra Notes - SECURITY!!
 
-
 ## OWASP 10 - most common security issues
 * Broken Access Control
   * url bypassing
@@ -54,4 +53,31 @@
   * front end is public!
   * fake requests to internal servers
 
+## PWA - Progressive Web Apps
+* use web apps as native apps
+* need to implement: 
+  * manifest, icons, service worker, offline fallbacks, push notifications, etc.
+* https://developers.google.com/web/progressive-web-apps/
+
+
+## TypeScript 
+* provides static typing
+* compiles to JS
+* avoids runtime errors/unexpected behavior
+* interfaces as well!!
+* can define new types
+* .tsx, included with Vite
+* *checks for nullity!!*
+* or type choices/multiple type options for a var
+* nice
+
+## Performance
+* optimize for real usage, based on data
+* download size
+* delay long loading/background
+* bottlenecks
+* caching so you aren't fetching over and over
+* psychologyyyy
+* lighthouse in chrome analyzes performance
+  * in firefox, it's called web vitals
 

@@ -26,11 +26,14 @@ function newShade(hex, lum) {
 
 export function Cat({userName}) {
     const [cat, setCat] = React.useState('list');
-    const [color, setColor] = React.useState("#f8f6c4");
+    const [color, setColor] = React.useState(JSON.parse(localStorage.getItem("categories"))[cat].color|"#f8f6c4");
 
-    React.useEffect(() => {loadCategories()},[]);
 
     // when the category changes, view category
+    // React.useEffect(() => {// rerender
+    //     console.log("cat changed");
+    // }
+    // ,[cat]); //TODO:
 
     function colorCat(color) {
         setColor(color);
@@ -46,7 +49,7 @@ export function Cat({userName}) {
         // categories = categories.filter((el) => el != catname); //TODO:
         localStorage.setItem("categories", JSON.stringify(categories));
         setCat(Object.keys(categories)[0]);
-        updateOptions();
+        // updateOptions();
         submitCategories(); 
     }
 

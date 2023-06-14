@@ -74,7 +74,7 @@ apiRouter.get('/cats', async (_req, res) => {
   delete cats.token;
   delete cats.password;
   delete cats._id;
-  console.log(cats);
+  // console.log(cats); TODO:
   res.send(cats);
 });
 
