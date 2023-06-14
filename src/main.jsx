@@ -6,7 +6,7 @@ import {Global} from "./global";
 import {submitCategories, Category, loadCategories} from "./categories"
 
 export function Main({userName}) {
-    const [catname, setCat] = React.useState('list');
+    const [catname, setCat] = React.useState(Object.keys(JSON.parse(localStorage.getItem("categories")))[0]);
 
     React.useEffect(() => {loadCategories()},[]);
     

@@ -3,7 +3,7 @@ import "../main.css";
 import { loadCategories } from './categories';
 
 export function CatSelect({userName, newCat, clickFunc}) {
-    const [catName, setCat] = React.useState("list");
+    const [catName, setCat] = React.useState(Object.keys(JSON.parse(localStorage.getItem("categories")))[0]);
     const [newCatName, setNewCatName] = React.useState("");
     const buttonName = newCat ? "New" : "View Category";
     // how to populate options??

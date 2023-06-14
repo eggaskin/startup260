@@ -25,8 +25,9 @@ function newShade(hex, lum) {
 }
 
 export function Cat({userName}) {
-    const [cat, setCat] = React.useState('list');
-    const [color, setColor] = React.useState(localStorage.getItem("categories")==null ? "#f8f6c4" :JSON.parse(localStorage.getItem("categories"))[cat].color);
+    const [cat, setCat] = React.useState(Object.keys(JSON.parse(localStorage.getItem("categories")))[0]);
+    const [color, setColor] = React.useState("#f8f6c4");
+        //localStorage.getItem("categories")==null ? "#f8f6c4" :JSON.parse(localStorage.getItem("categories"))[cat].color);
 
     // when the category changes, view category
     // React.useEffect(() => {// rerender
