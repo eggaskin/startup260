@@ -7,12 +7,6 @@ export function Notes({catname}) {
     const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("categories"))[catname].notes);
     const [newnote, setNewNote] = React.useState("");
 
-    // React.useEffect(() => {
-    //     setCat(catname);
-    //     setNotes(JSON.parse(localStorage.getItem("categories"))[catname].notes);
-    //     console.log("notes changed to "+catname);
-    // },[catname]);
-
     function addNote() {
         let nootes = notes;
         nootes.push(newnote);
@@ -40,9 +34,6 @@ export function Notes({catname}) {
     //TODO: how to style all notes?
 
     function getNotes() {
-        // setCat(catname);
-        // setNotes(JSON.parse(localStorage.getItem("categories"))[catname].notes);
-        // console.log("notes updated to "+catname)
         let nnotes = JSON.parse(localStorage.getItem("categories"))[catname].notes;
         const noteEls = [];
         for (let i = 0; i < nnotes.length; i++) {

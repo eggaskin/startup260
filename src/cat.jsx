@@ -29,12 +29,6 @@ export function Cat({userName}) {
     const [color, setColor] = React.useState("#f8f6c4");
         //localStorage.getItem("categories")==null ? "#f8f6c4" :JSON.parse(localStorage.getItem("categories"))[cat].color);
 
-    // when the category changes, view category
-    // React.useEffect(() => {// rerender
-    //     console.log("cat changed");
-    // }
-    // ,[cat]); //TODO:
-
     function colorCat(color) {
         setColor(color);
         let categories = JSON.parse(localStorage.getItem("categories"));
@@ -49,7 +43,6 @@ export function Cat({userName}) {
         // categories = categories.filter((el) => el != catname); //TODO:
         localStorage.setItem("categories", JSON.stringify(categories));
         setCat(Object.keys(categories)[0]);
-        // updateOptions();
         submitCategories(); 
     }
 
