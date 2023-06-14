@@ -40,7 +40,7 @@ export function Notes({catname}) {
             noteEls.push(<div key={i}><div className="note">{nnotes[i]}</div>
             <div id="delbutton">
                 <button type="button" onClick={()=>{removeNote(nnotes[i])}}>
-                    <img src="delete.png" alt="Delete" width="25vw" height="25vw" />
+                    <img src="/delete.png" alt="Delete" width="25vw" height="25vw" />
                         </button></div></div>);
         }
         return noteEls;
